@@ -901,8 +901,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(13, 13, 13, 0.98);
-    backdrop-filter: blur(20px);
+    background-color: var(--bg-color);
     z-index: 3000;
     display: none;
     flex-direction: column;
@@ -1048,7 +1047,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.95);
+    background-color: var(--bg-color);
     z-index: 4000;
     display: none;
     justify-content: center;
@@ -1124,4 +1123,173 @@ footer {
         flex-direction: column;
         gap: 8px;
     }
+}
+/* Gallery Folder Selection */
+.gallery-folders-wrap {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 15vh 5% 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease 0.3s;
+}
+
+.gallery-overlay.active .gallery-folders-wrap {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.folder-box {
+    aspect-ratio: 1;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    transition: all 0.5s ease;
+}
+
+.folder-box:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-5px);
+}
+
+.folder-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    transition: all 0.5s ease;
+}
+
+.folder-box:hover img {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.folder-box h3 {
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.folder-box span {
+    position: relative;
+    z-index: 2;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-color);
+}
+
+.folder-box.empty {
+    border-style: dashed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: default;
+}
+
+.folder-box.empty:hover {
+    border-color: #444;
+    transform: none;
+}
+
+.folder-box.empty span {
+    color: #444;
+}
+
+/* Hide Grid initially in Folder Mode */
+.gallery-image-grid-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    z-index: 3010;
+    overflow-y: auto;
+    padding: 120px 5% 50px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.gallery-image-grid-wrap.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-home {
+    position: fixed;
+    top: 40px;
+    left: 50px;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    cursor: pointer;
+    z-index: 3020;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
+}
+
+.back-to-home::before {
+    content: '←';
+    font-size: 1.2rem;
+}
+
+.back-to-home:hover {
+    color: #fff;
+    transform: translateX(-5px);
+}
+
+.gallery-overlay.folder-opened .back-to-home {
+    display: none;
+}
+
+.back-to-folders {
+    position: fixed;
+    top: 40px;
+    left: 50px;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    cursor: pointer;
+    z-index: 3020;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
+}
+
+.back-to-folders::before {
+    content: '←';
+    font-size: 1.2rem;
+}
+
+.back-to-folders:hover {
+    color: #fff;
+    transform: translateX(-5px);
 }

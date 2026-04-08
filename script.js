@@ -70,59 +70,104 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Gallery Logic - Attaching to project items for robustness
-    const galleryOverlay = document.getElementById("galleryOverlay");
-    const closeGallery = document.getElementById("closeGallery");
-
-    document.querySelectorAll('.project-item').forEach(item => {
-        const title = item.querySelector('h4').innerText;
-        if (title.includes("Curated Lounge")) {
-            item.style.cursor = "pointer"; // Make the whole box look clickable
-            item.addEventListener("click", (e) => {
-                // If the user clicked a link (like the button), let the other listener handle it or prevent it here
-                e.preventDefault();
+    // Gallery Logic - General Functions
+    const openProjectGallery = (overlay, gridId = null) => {
+        if (overlay) {
+            overlay.style.display = "flex";
+            requestAnimationFrame(() => {
+                overlay.classList.add("active");
+                document.body.style.overflow = "hidden";
                 
-                if (galleryOverlay) {
-                    galleryOverlay.style.display = "flex";
-                    requestAnimationFrame(() => {
-                        galleryOverlay.classList.add("active");
-                        document.body.style.overflow = "hidden";
+                // Reset view state
+                const folders = overlay.querySelector('.gallery-folders-wrap');
+                const grids = overlay.querySelectorAll('.gallery-image-grid-wrap');
+                
+                if (gridId) {
+                    if (folders) folders.style.display = 'none';
+                    grids.forEach(g => {
+                        if (g.id === gridId) {
+                            g.classList.add('active');
+                        } else {
+                            g.classList.remove('active');
+                        }
                     });
+                    overlay.classList.add('folder-opened');
+                } else {
+                    if (folders) folders.style.display = 'grid';
+                    grids.forEach(g => g.classList.remove('active'));
+                    overlay.classList.remove('folder-opened');
                 }
             });
         }
-    });
+    };
 
-    // Also keep the button listener just in case
-    document.querySelectorAll('.view-project').forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            // If this is the Curated Lounge project (by ID or text check)
-            if (btn.id === "view-lounge-project" || btn.innerText.includes("CURATED LOUNGE") || btn.closest('.project-item').querySelector('h4').innerText.includes("Curated Lounge")) {
-                e.preventDefault();
-                e.stopPropagation();
+    window.showFolderContent = (box, gridId) => {
+        const overlay = box.closest('.gallery-overlay');
+        const gridWrap = overlay.querySelector(`#${gridId}`);
+        if (gridWrap) {
+            gridWrap.classList.add('active');
+            overlay.classList.add('folder-opened');
+        }
+    };
+
+    window.hideFolderContent = (btn) => {
+        const gridWrap = btn.closest('.gallery-image-grid-wrap');
+        const overlay = btn.closest('.gallery-overlay');
+        gridWrap.classList.remove('active');
+        overlay.classList.remove('folder-opened');
+    };
+
+    window.closeProjectGallery = (overlay) => {
+        if (overlay) {
+            overlay.classList.remove("active");
+            setTimeout(() => {
+                overlay.style.display = "none";
+                document.body.style.overflow = "auto";
                 
-                if (galleryOverlay) {
-                    galleryOverlay.style.display = "flex";
-                    // Using requestAnimationFrame for smoother entry
-                    requestAnimationFrame(() => {
-                        galleryOverlay.classList.add("active");
-                        document.body.style.overflow = "hidden";
-                    });
-                }
+                // Reset View for next time
+                const folders = overlay.querySelector('.gallery-folders-wrap');
+                const grids = overlay.querySelectorAll('.gallery-image-grid-wrap');
+                if (folders) folders.style.display = 'grid';
+                grids.forEach(g => g.classList.remove('active'));
+                overlay.classList.remove('folder-opened');
+            }, 800);
+        }
+    };
+
+    // Project Overlays
+    const portfolioOverlay = document.getElementById("portfolioOverlay");
+    const closePortfolio = document.getElementById("closePortfolioGallery");
+
+    // "VIEW ALL PROJECTS" Button
+    const viewAllBtn = document.getElementById("view-all-projects-btn");
+    if (viewAllBtn) {
+        viewAllBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            openProjectGallery(portfolioOverlay);
+        });
+    }
+
+    document.querySelectorAll('.project-item').forEach((item) => {
+        item.style.cursor = "pointer";
+        item.addEventListener("click", (e) => {
+            if (e.target.tagName !== 'A') {
+                const gridId = item.getAttribute('data-grid');
+                openProjectGallery(portfolioOverlay, gridId);
             }
         });
     });
 
-    if (closeGallery && galleryOverlay) {
-        closeGallery.addEventListener("click", (e) => {
+    // View Buttons on Main Cards (if any remain)
+    document.querySelectorAll('.view-project').forEach(btn => {
+        btn.addEventListener("click", (e) => {
             e.preventDefault();
-            galleryOverlay.classList.remove("active");
-            setTimeout(() => {
-                galleryOverlay.style.display = "none";
-                document.body.style.overflow = "auto";
-            }, 800);
+            e.stopPropagation();
+            const gridId = btn.getAttribute('data-grid');
+            openProjectGallery(portfolioOverlay, gridId);
         });
-    }
+    });
+
+    if (closePortfolio) closePortfolio.addEventListener("click", (e) => { e.preventDefault(); closeProjectGallery(portfolioOverlay); });
 
     // Lightbox Logic
     const lightbox = document.getElementById("lightbox");
