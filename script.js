@@ -50,11 +50,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // Parallax
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
-        const heroBg = document.querySelector('.hero-bg img');
+        const heroBg = document.querySelector('.hero-bg img, .hero-bg video');
         if (heroBg) {
             heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
         }
     });
+
+    // Force Video Play - Critical for background videos
+    const bgVideo = document.querySelector('.hero-bg video');
+    if (bgVideo) {
+        bgVideo.play().catch(error => {
+            console.log("Autoplay was prevented:", error);
+            // On user interaction, try to play
+            const playOnGesture = () => {
+                bgVideo.play();
+                document.removeEventListener('click', playOnGesture);
+            };
+            document.addEventListener('click', playOnGesture);
+        });
+    }
 
     // Gallery Logic - Attaching to project items for robustness
     const galleryOverlay = document.getElementById("galleryOverlay");

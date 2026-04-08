@@ -150,6 +150,10 @@ header {
     overflow: hidden;
 }
 
+.menu-overlay.active .menu-links a {
+    transform: translateY(0);
+}
+
 .menu-links a {
     font-size: 4rem;
     text-decoration: none;
@@ -158,10 +162,6 @@ header {
     display: block;
     transform: translateY(100%);
     transition: transform 0.5s ease;
-}
-
-.menu-overlay.active .menu-links a {
-    transform: translateY(0);
 }
 
 .menu-links a:hover {
@@ -179,6 +179,28 @@ header {
     text-align: center;
     padding: 0 10%;
     position: relative;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hero-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+}
+
+.hero > *:not(.hero-bg) {
+    position: relative;
+    z-index: 1;
 }
 
 .hero h1 {
