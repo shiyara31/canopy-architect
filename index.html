@@ -9,10 +9,6 @@
 </head>
 <body>
 
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
-
     <!-- Loader -->
     <div id="loader">
         <div class="loader-content">
@@ -134,12 +130,12 @@
             <div class="projects-masonry">
                 <div class="project-item reveal">
                     <div class="project-img-container">
-                        <img src="assets/project3.png" alt="The Curated Lounge">
+                        <img src="assets/lounge/1.jpg" alt="The Curated Lounge">
                     </div>
                     <div class="project-info">
                         <span class="project-label">Interior</span>
                         <h4>The Curated Lounge</h4>
-                        <a href="#" class="view-project">VIEW PROJECT &rarr;</a>
+                        <a href="javascript:void(0)" class="view-project" id="view-lounge-project" style="pointer-events: auto;">VIEW PROJECT &rarr;</a>
                     </div>
                 </div>
                 <div class="project-item reveal">
@@ -149,7 +145,7 @@
                     <div class="project-info">
                         <span class="project-label">Residence</span>
                         <h4>The Gilded Refectory</h4>
-                        <a href="#" class="view-project">VIEW PROJECT &rarr;</a>
+                        <a href="javascript:void(0)" class="view-project">VIEW PROJECT &rarr;</a>
                     </div>
                 </div>
 
@@ -216,6 +212,103 @@
             <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 50px;">© 2026 CANOPY ARCHITECTS. ALL RIGHTS RESERVED.</p>
         </footer>
     </main>
+
+    <!-- Gallery Overlay -->
+    <div class="gallery-overlay" id="galleryOverlay">
+        <div class="gallery-header">
+            <div class="gallery-title-wrap">
+                <span class="gallery-title">The Curated Lounge</span>
+                <div class="gallery-meta">
+                    <div class="meta-item"><span>Client:</span> Khader</div>
+                    <div class="meta-item"><span>Location:</span> Vidyanagar, Kasargod</div>
+                    <div class="meta-item"><span>Category:</span> Residence</div>
+                    <div class="meta-item"><span>Area:</span> 14,200 sqft</div>
+                </div>
+            </div>
+            <div class="gallery-close" id="closeGallery">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="assets/lounge/1.jpg" alt="Gallery Image 1"></div>
+            <div class="gallery-item"><img src="assets/lounge/2.jpg" alt="Gallery Image 2"></div>
+            <div class="gallery-item"><img src="assets/lounge/3.jpg" alt="Gallery Image 3"></div>
+            <div class="gallery-item"><img src="assets/lounge/8.jpg" alt="Gallery Image 4"></div>
+            <div class="gallery-item"><img src="assets/lounge/12.jpg" alt="Gallery Image 5"></div>
+            <div class="gallery-item"><img src="assets/lounge/15.jpg" alt="Gallery Image 6"></div>
+            <div class="gallery-item"><img src="assets/lounge/23.jpg" alt="Gallery Image 7"></div>
+            <div class="gallery-item"><img src="assets/lounge/26.jpg" alt="Gallery Image 8"></div>
+            <div class="gallery-item"><img src="assets/lounge/29.jpg" alt="Gallery Image 9"></div>
+            <div class="gallery-item"><img src="assets/lounge/37.jpg" alt="Gallery Image 10"></div>
+            <div class="gallery-item"><img src="assets/lounge/39.jpg" alt="Gallery Image 11"></div>
+            <div class="gallery-item"><img src="assets/lounge/45.jpg" alt="Gallery Image 12"></div>
+            <div class="gallery-item"><img src="assets/lounge/47.jpg" alt="Gallery Image 13"></div>
+            <div class="gallery-item"><img src="assets/lounge/53.jpg" alt="Gallery Image 14"></div>
+            <div class="gallery-item"><img src="assets/lounge/56.jpg" alt="Gallery Image 15"></div>
+            <div class="gallery-item"><img src="assets/lounge/57.jpg" alt="Gallery Image 16"></div>
+            <div class="gallery-item"><img src="assets/lounge/58.jpg" alt="Gallery Image 17"></div>
+            <div class="gallery-item"><img src="assets/lounge/61.jpg" alt="Gallery Image 18"></div>
+            <div class="gallery-item"><img src="assets/lounge/67.jpg" alt="Gallery Image 19"></div>
+            <div class="gallery-item"><img src="assets/lounge/68.jpg" alt="Gallery Image 20"></div>
+            <div class="gallery-item"><img src="assets/lounge/4.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/6.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/7.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/9.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/10.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/11.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/13.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/16.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/17.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/18.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/19.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/20.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/21.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/22.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/24.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/27.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/28.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/30.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/33.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/34.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/35.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/38.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/40.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/41.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/42.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/43.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/44.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/46.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/48.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/49.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/50.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/51.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/52.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/55.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/59.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/62.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/64.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/66.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/69.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/70.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/5.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/14.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/25.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/31.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/32.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/36.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/54.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/60.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/63.jpg" alt="Gallery Image"></div>
+            <div class="gallery-item"><img src="assets/lounge/65.jpg" alt="Gallery Image"></div>
+        </div>
+    </div>
+
+    <!-- Lightbox for Individual Images -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="closeLightbox">&times;</span>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="Lightbox Image">
+    </div>
 
     <script src="script.js"></script>
 </body>
