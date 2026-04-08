@@ -28,6 +28,9 @@ The "Master-works" section showcases high-end architectural photography in a cle
 ### 5. Full-Screen Navigation
 A minimalist hamburger menu that triggers a full-screen overlay with elegant, large-scale links.
 
+### 6. Fully Mobile Responsive
+The layout has been meticulously optimized for all devices, from large desktop monitors to tablets and smartphones, ensuring the luxury aesthetic remains consistent on any screen size.
+
 ## 📂 Project Structure
 
 - `index.html`: The semantic structure of the landing page.

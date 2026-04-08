@@ -784,24 +784,95 @@ footer {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 4rem; }
-    .hero h1 span.script { font-size: 5rem; }
-    .vision-title { font-size: 3.5rem; }
-    .vision-para { font-size: 1.8rem; }
-    .ampersand { font-size: 4rem; }
-    .brand-name { font-size: 1.2rem; }
-    .vision-footer { flex-direction: column; gap: 40px; margin-top: 40px; }
-    .footer-text { font-size: 0.9rem; }
-    .cta-title { font-size: 3.5rem; letter-spacing: -1px; margin-bottom: 40px; }
-    .cta-title .script { font-size: 4rem; }
-    .btn-outline { padding: 15px 30px; font-size: 0.7rem; }
-    .final-cta { padding: 100px 10%; }
+/* Responsive Optimization */
+@media (max-width: 1024px) {
+    .cursor, .cursor-follower { display: none !important; }
+    * { cursor: auto !important; }
+    
+    header { padding: 25px 30px; }
+    .logo { font-size: 1.2rem; }
+    .tagline { display: none; } /* Hide tagline on mobile header for space */
+
+    .hero h1 { font-size: 5rem; }
+    .hero h1 span.script { font-size: 6rem; }
+    .hero-sub { font-size: 0.9rem; padding: 0 5%; }
+    
+    .vision-title { font-size: 4.5rem; }
+    .vision-para { font-size: 2.2rem; }
+    .ampersand { font-size: 5rem; }
+    
+    .disciplines-container { flex-direction: column; gap: 50px; }
+    .disciplines-left { position: relative; height: auto; width: 100%; padding: 60px 0 20px; }
+    .disciplines-right { width: 100%; padding: 0; }
+    .sticky-title { font-size: 4rem; display: inline-block; }
+    .sticky-title .script { font-size: 5rem; display: inline; margin-left: 10px; }
+    .discipline-item { margin-bottom: 80px; gap: 20px; }
+    .discipline-info h3 { font-size: 2.2rem; }
+    .discipline-info p { font-size: 1.2rem; }
+
+    .portfolio-title { font-size: 4.5rem; }
+    .portfolio-title .script { font-size: 5.5rem; }
+    .projects-masonry { grid-template-columns: 1fr; gap: 30px; }
+    .project-img-container { height: 450px; }
+    .project-info { opacity: 1; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%); padding: 30px; }
+    .project-info h4 { font-size: 2.2rem; margin-bottom: 15px; }
+    
+    .cta-title { font-size: 4rem; }
+    .cta-title .script { font-size: 5rem; }
+    
     .contact-container { flex-direction: column; gap: 60px; }
-    .contact-title { font-size: 3rem; }
-    .contact-title .script { font-size: 4rem; }
-    .contact-sub { font-size: 1.2rem; }
-    .projects-masonry { grid-template-columns: 1fr; }
-    header { padding: 20px; }
-    .footer-cta h2 { font-size: 3rem; }
+    .contact-title { font-size: 3.5rem; }
+    .contact-title .script { font-size: 4.5rem; }
+    .contact-sub { font-size: 1.3rem; }
+}
+
+@media (max-width: 768px) {
+    .menu-links a { font-size: 2.5rem; }
+    .menu-links li { margin-bottom: 20px; }
+    
+    .hero h1 { font-size: 3.8rem; }
+    .hero h1 span.script { font-size: 4.5rem; margin-top: -15px; }
+    
+    .vision { padding: 100px 7%; }
+    .vision-title { font-size: 3.2rem; }
+    .vision-para { font-size: 1.6rem; margin-bottom: 60px; }
+    .ampersand { font-size: 3.5rem; }
+    
+    .disciplines-refined { padding: 0 7%; }
+    .sticky-title { font-size: 3.2rem; }
+    .sticky-title .script { font-size: 4rem; }
+    
+    .portfolio { padding: 80px 7%; }
+    .portfolio-title { font-size: 3.2rem; }
+    .portfolio-title .script { font-size: 4rem; }
+    .project-img-container { height: 350px; }
+    .project-info h4 { font-size: 1.8rem; }
+    
+    .final-cta { padding: 80px 7%; }
+    .cta-title { font-size: 3.2rem; }
+    .cta-title .script { font-size: 4rem; }
+    .btn-outline { padding: 18px 35px; letter-spacing: 3px; }
+    
+    .contact-section { padding: 80px 7%; }
+    .contact-title { font-size: 2.8rem; }
+    .contact-title .script { font-size: 3.5rem; }
+    .inquiry-form { gap: 30px; }
+}
+
+@media (max-width: 480px) {
+    .hero h1 { font-size: 3rem; }
+    .hero h1 span.script { font-size: 3.8rem; }
+    .hero-btns { flex-direction: column; width: 100%; gap: 15px; }
+    .btn { width: 100%; text-align: center; }
+    
+    .vision-title { font-size: 2.6rem; }
+    .vision-para { font-size: 1.4rem; }
+    
+    .sticky-title { font-size: 2.6rem; }
+    .discipline-info h3 { font-size: 1.8rem; }
+    
+    .portfolio-title { font-size: 2.6rem; }
+    .project-img-container { height: 300px; }
+    
+    .cta-title { font-size: 2.6rem; }
 }
