@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     menuLinks.forEach(link => {
         link.addEventListener('click', () => {
             menuOverlay.classList.remove('active');
+            menuToggle.classList.remove('open');
         });
     });
 

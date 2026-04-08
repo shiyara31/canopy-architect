@@ -129,9 +129,21 @@ header {
 
 .menu-toggle span {
     width: 30px;
-    height: 2px;
+    height: 1.5px;
     background-color: var(--text-color);
     transition: var(--transition);
+}
+
+.menu-toggle.open span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
 }
 
 /* Overlay Menu */
@@ -806,7 +818,7 @@ footer {
     .disciplines-right { width: 100%; padding: 0; }
     .sticky-title { font-size: 4rem; display: inline-block; }
     .sticky-title .script { font-size: 5rem; display: inline; margin-left: 10px; }
-    .discipline-item { margin-bottom: 80px; gap: 20px; }
+    .discipline-item { margin-bottom: 80px; gap: 20px; opacity: 1; transform: translateY(0); }
     .discipline-info h3 { font-size: 2.2rem; }
     .discipline-info p { font-size: 1.2rem; }
 
@@ -821,42 +833,50 @@ footer {
     .cta-title .script { font-size: 5rem; }
     
     .contact-container { flex-direction: column; gap: 60px; }
+    .contact-left { text-align: center; }
     .contact-title { font-size: 3.5rem; }
     .contact-title .script { font-size: 4.5rem; }
-    .contact-sub { font-size: 1.3rem; }
+    .contact-sub { font-size: 1.3rem; margin: 0 auto; }
+    .inquiry-form { width: 100%; }
 }
 
 @media (max-width: 768px) {
+    header { padding: 20px 25px; }
     .menu-links a { font-size: 2.5rem; }
     .menu-links li { margin-bottom: 20px; }
     
+    .hero { padding: 0 5%; }
     .hero h1 { font-size: 3.8rem; }
     .hero h1 span.script { font-size: 4.5rem; margin-top: -15px; }
     
-    .vision { padding: 100px 7%; }
+    .vision { padding: 100px 5%; }
     .vision-title { font-size: 3.2rem; }
     .vision-para { font-size: 1.6rem; margin-bottom: 60px; }
     .ampersand { font-size: 3.5rem; }
+    .vision-footer { flex-direction: column; gap: 40px; }
+    .vision-col { max-width: 100%; }
     
-    .disciplines-refined { padding: 0 7%; }
+    .disciplines-refined { padding: 0 5%; }
     .sticky-title { font-size: 3.2rem; }
     .sticky-title .script { font-size: 4rem; }
     
-    .portfolio { padding: 80px 7%; }
+    .portfolio { padding: 80px 5%; }
     .portfolio-title { font-size: 3.2rem; }
     .portfolio-title .script { font-size: 4rem; }
     .project-img-container { height: 350px; }
     .project-info h4 { font-size: 1.8rem; }
     
-    .final-cta { padding: 80px 7%; }
+    .final-cta { padding: 80px 5%; }
     .cta-title { font-size: 3.2rem; }
     .cta-title .script { font-size: 4rem; }
-    .btn-outline { padding: 18px 35px; letter-spacing: 3px; }
+    .btn-outline { padding: 18px 35px; letter-spacing: 3px; width: 100%; }
     
-    .contact-section { padding: 80px 7%; }
+    .contact-section { padding: 80px 5%; }
     .contact-title { font-size: 2.8rem; }
     .contact-title .script { font-size: 3.5rem; }
     .inquiry-form { gap: 30px; }
+    
+    .footer-text { font-size: 0.9rem; }
 }
 
 @media (max-width: 480px) {
