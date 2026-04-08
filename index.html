@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canopy Architects | Architectural Poetics and Global Consultancy</title>
+    <meta name="description" content="Canopy Architects is a luxury global consultancy based in Dubai and Kerala, specializing in architectural poetics and master-works.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Loader -->
+    <div id="loader">
+        <div class="loader-content">
+            <h1 class="loader-logo">CANOPY</h1>
+            <p class="tagline">Architects</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header>
+        <a href="#" class="logo">Canopy</a>
+        <div class="tagline">Global Consultancy | Dubai • Kerala</div>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Overlay Menu -->
+    <div class="menu-overlay" id="menuOverlay">
+        <ul class="menu-links">
+            <li><a href="#hero" data-text="Home">Home</a></li>
+            <li><a href="#vision" data-text="Vision">Vision</a></li>
+            <li><a href="#portfolio" data-text="Portfolio">Portfolio</a></li>
+            <li><a href="#contact" data-text="Contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-bg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;">
+                <img src="assets/hero.png" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.4;" alt="Hero Image">
+            </div>
+            <h1 class="reveal">Architectural<br><span class="script">Poetics.</span></h1>
+            <p class="hero-sub reveal">Crafting timeless spaces where minimalist luxury meets global precision. Based in Dubai and Kerala, we redefine the essence of master-works.</p>
+            <div class="hero-btns reveal">
+                <a href="#portfolio" class="btn primary">View Portfolio</a>
+                <a href="#contact" class="btn">Consultation</a>
+            </div>
+        </section>
+
+        <!-- Vision Section -->
+        <section class="vision" id="vision">
+            <div class="reveal">
+                <span class="section-tag">VISION</span>
+                <div class="vision-header">
+                    <div class="brand-element">
+                        <svg class="triangle-logo" viewBox="0 0 100 100" width="30" height="30">
+                            <polygon points="50,15 90,85 10,85" stroke="var(--accent-color)" fill="none" stroke-width="2"/>
+                            <polygon points="50,25 80,80 20,80" stroke="var(--accent-color)" fill="none" stroke-width="1" opacity="0.5"/>
+                        </svg>
+                        <span class="brand-name">CANOPY</span>
+                    </div>
+                    <h2 class="vision-title">Designing<br>Form <span class="ampersand">&</span> Experience.</h2>
+                </div>
+                <p class="vision-para">We believe that luxury lies in the harmony between structured innovation and organic sustainability. Our method is a narrative told through timeless materials and visionary planning.</p>
+                <div class="vision-footer">
+                    <div class="vision-col">
+                        <span class="footer-label">DESIGN PRECISION</span>
+                        <p class="footer-text">Pushing the boundaries of modern aesthetics with advanced design solutions and spatial intelligence that define longevity.</p>
+                    </div>
+                    <div class="vision-col">
+                        <span class="footer-label">GLOBAL AESTHETICS</span>
+                        <p class="footer-text">Curating architectural languages that resonate with international standards of luxury and local environmental respect.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Disciplines Section Refined -->
+        <section class="disciplines-refined" id="disciplines">
+            <div class="disciplines-container">
+                <div class="disciplines-left">
+                    <span class="section-tag">DISCIPLINES</span>
+                    <h2 class="sticky-title">Elevating the<br><span class="script">Exceptional.</span></h2>
+                    <p class="sticky-para">Comprehensive architectural consultancy from conceptual design to final master-planning.</p>
+                </div>
+                <div class="disciplines-right">
+                    <div class="discipline-item">
+                        <span class="discipline-num">01</span>
+                        <div class="discipline-info">
+                            <h3>Architecture<br>Consultancy</h3>
+                            <p>High-end conceptual design and master-planning for luxury residential and commercial estates across the globe.</p>
+                        </div>
+                    </div>
+                    <div class="discipline-item">
+                        <span class="discipline-num">02</span>
+                        <div class="discipline-info">
+                            <h3>Landscape<br>Master-planning</h3>
+                            <p>Curated outdoor environments that blend modern aesthetics with functional elegance and ecological respect.</p>
+                        </div>
+                    </div>
+                    <div class="discipline-item">
+                        <span class="discipline-num">03</span>
+                        <div class="discipline-info">
+                            <h3>Interior<br>Architecture</h3>
+                            <p>Seamless execution of specialized interior elements with meticulous attention to detail and high-end materials.</p>
+                        </div>
+                    </div>
+                    <div class="discipline-item">
+                        <span class="discipline-num">04</span>
+                        <div class="discipline-info">
+                            <h3>Design Direction</h3>
+                            <p>End-to-end oversight and aesthetic coordination from initial concept to the final, polished vision of your masterpiece.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio Section Refined -->
+        <section class="portfolio" id="portfolio">
+            <div class="portfolio-header reveal">
+                <span class="section-tag center">SELECTED PORTFOLIO</span>
+                <h2 class="portfolio-title">Curated <span class="script">Master-works</span></h2>
+            </div>
+            <div class="projects-masonry">
+                <div class="project-item reveal">
+                    <div class="project-img-container">
+                        <img src="assets/project3.png" alt="The Curated Lounge">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-label">Interior</span>
+                        <h4>The Curated Lounge</h4>
+                        <a href="#" class="view-project">VIEW PROJECT &rarr;</a>
+                    </div>
+                </div>
+                <div class="project-item reveal">
+                    <div class="project-img-container">
+                        <img src="assets/project1.png" alt="The Gilded Refectory">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-label">Residence</span>
+                        <h4>The Gilded Refectory</h4>
+                        <a href="#" class="view-project">VIEW PROJECT &rarr;</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="final-cta">
+            <div class="reveal center-content">
+                <span class="section-tag center">EXPLORE ALL WORKS</span>
+                <h2 class="cta-title">See what we can<br><span class="script">Design Together.</span></h2>
+                <div class="cta-btn-wrap">
+                    <a href="#" class="btn-outline">VIEW ALL PROJECTS</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact-inquiry">
+            <div class="contact-container reveal">
+                <div class="contact-left">
+                    <div class="brand-element">
+                        <svg class="triangle-logo" viewBox="0 0 100 100" width="30" height="30">
+                            <polygon points="50,15 90,85 10,85" stroke="var(--accent-color)" fill="none" stroke-width="2"/>
+                        </svg>
+                        <span class="brand-name">INQUIRY</span>
+                    </div>
+                    <h2 class="contact-title">Initiate Your<br><span class="script">Vision.</span></h2>
+                    <p class="contact-sub">Begin a conversation regarding your next architectural odyssey today.</p>
+                </div>
+                <div class="contact-right">
+                    <form class="inquiry-form">
+                        <div class="form-group">
+                            <label>FULL NAME</label>
+                            <input type="text" placeholder="Johnathan Doe">
+                        </div>
+                        <div class="form-group">
+                            <label>EMAIL ADDRESS</label>
+                            <input type="email" placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>CONSULTANCY TYPE</label>
+                            <input type="text" placeholder="Interior Design Consultancy">
+                        </div>
+                        <div class="form-group">
+                            <label>BRIEF VISION</label>
+                            <textarea placeholder="Describe your masterpiece"></textarea>
+                        </div>
+                        <button type="submit" class="btn-solid">SEND INQUIRY</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="contact">
+            <div class="social-links reveal">
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Facebook</a>
+                <a href="#">YouTube</a>
+            </div>
+
+            <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 50px;">© 2026 CANOPY ARCHITECTS. ALL RIGHTS RESERVED.</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
