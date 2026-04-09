@@ -1300,6 +1300,10 @@ footer {
     transform: translateY(0);
 }
 
+.gallery-overlay.folder-opened .gallery-folders-wrap {
+    display: none !important;
+}
+
 .folder-box {
     aspect-ratio: 1;
     background: #1a1a1a;

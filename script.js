@@ -142,16 +142,25 @@ document.addEventListener('DOMContentLoaded', () => {
         const overlay = box.closest('.gallery-overlay');
         const gridWrap = overlay.querySelector(`#${gridId}`);
         if (gridWrap) {
+            // Force folders to hide instantly
+            const folders = overlay.querySelector('.gallery-folders-wrap');
+            if (folders) folders.style.display = 'none';
+            
             gridWrap.classList.add('active');
             overlay.classList.add('folder-opened');
+            overlay.scrollTop = 0; // Reset scroll to top of project details
         }
     };
 
     window.hideFolderContent = (btn) => {
         const gridWrap = btn.closest('.gallery-image-grid-wrap');
         const overlay = btn.closest('.gallery-overlay');
+        const folders = overlay.querySelector('.gallery-folders-wrap');
+        
         gridWrap.classList.remove('active');
         overlay.classList.remove('folder-opened');
+        if (folders) folders.style.display = 'grid';
+        overlay.scrollTop = 0;
     };
 
     window.closeProjectGallery = (overlay) => {
@@ -270,5 +279,41 @@ document.addEventListener('DOMContentLoaded', () => {
             }, { threshold: 0.1 });
             heroObserver.observe(heroSection);
         }
+    }
+
+    // Stats Counter Animation
+    const statsCounters = document.querySelectorAll('.stat-counter');
+    if (statsCounters.length > 0) {
+        const countTo = (el) => {
+            const target = parseInt(el.getAttribute('data-target'));
+            const duration = 2000; // 2 seconds
+            const stepTime = 20;
+            const totalSteps = duration / stepTime;
+            const increment = target / totalSteps;
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    // Final value cleanup
+                    el.innerText = target < 10 ? target.toString().padStart(2, '0') : target;
+                    clearInterval(timer);
+                } else {
+                    const rounded = Math.floor(current);
+                    el.innerText = target < 10 && rounded < 10 ? rounded.toString().padStart(2, '0') : rounded;
+                }
+            }, stepTime);
+        };
+
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                    entry.target.classList.add('counted');
+                    countTo(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statsCounters.forEach(counter => statsObserver.observe(counter));
     }
 });
