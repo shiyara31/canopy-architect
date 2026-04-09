@@ -1369,7 +1369,7 @@ footer {
     .menu-links a { font-size: 2.5rem; }
     .gallery-overlay { padding: 80px 20px 40px; }
     .gallery-header { padding: 40px 0; flex-direction: column; gap: 20px; }
-    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 5px; }
     .back-to-home, .back-to-folders, .back-to-site { top: 25px; left: 25px; font-size: 0.7rem; }
     .gallery-folders-wrap { grid-template-columns: 1fr; padding-top: 80px; }
     
@@ -1384,5 +1384,5 @@ footer {
     .vision-title-center { font-size: 2.4rem; }
     .portfolio-title { font-size: 2.8rem; }
     .project-img-container { height: 300px; }
-    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 3px; }
 }
