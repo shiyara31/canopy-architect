@@ -1,10 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Lenis
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        smoothTouch: false,
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+    window.lenis = lenis;
+
     // Loader
-    // Loader logic with Session Storage to avoid repeat popups
     const loader = document.getElementById('loader');
     const hasLoaded = sessionStorage.getItem('hasLoaded');
 
-    if (loader && !hasLoaded) {
+    const isContactPage = window.location.pathname.includes('contact.html');
+
+    if (loader && !hasLoaded && !isContactPage) {
         window.addEventListener('load', () => {
             setTimeout(() => {
                 loader.style.opacity = '0';
@@ -15,11 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 600);
             }, 1000);
         });
-    } else if (loader) {
-        // Hide instantly if already loaded in this session
-        loader.style.display = 'none';
-        document.body.classList.add('page-loaded');
     } else {
+        // Instant show for contact page or if already loaded
+        if (loader) loader.style.display = 'none';
         document.body.classList.add('page-loaded');
     }
 
@@ -41,12 +56,22 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.addEventListener('click', () => {
             menuOverlay.classList.toggle('active');
             menuToggle.classList.toggle('open');
+            
+            if (menuOverlay.classList.contains('active')) {
+                if (window.lenis) window.lenis.stop();
+            } else {
+                if (window.lenis) window.lenis.start();
+            }
         });
 
         menuLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
                 if (href && href.includes('.html')) {
+                    if (href.includes('contact.html')) {
+                        // Go to contact page directly as requested
+                        return;
+                    }
                     e.preventDefault();
                     document.body.classList.add('page-exiting');
                     setTimeout(() => {
