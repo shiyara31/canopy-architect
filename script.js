@@ -41,28 +41,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Reveal on Scroll
-    const reveals = document.querySelectorAll('.reveal, .discipline-item');
+    const reveals = document.querySelectorAll('.reveal, .reveal-mask, .discipline-item');
     if (reveals.length > 0) {
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                } else if (entry.target.classList.contains('discipline-item')) {
-                    entry.target.classList.remove('active');
                 }
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.1 });
 
         reveals.forEach(el => revealObserver.observe(el));
     }
 
-    // Parallax
+    // Enhanced Parallax Logic
+    const parallaxItems = document.querySelectorAll('.project-img-container img, .hero-bg img, .hero-bg video');
+
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
-        const heroBg = document.querySelector('.hero-bg img, .hero-bg video');
-        if (heroBg) {
-            heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
-        }
+        const viewportHeight = window.innerHeight;
+
+        parallaxItems.forEach(item => {
+            const rect = item.parentElement.getBoundingClientRect();
+            const isVisible = rect.top < viewportHeight && rect.bottom > 0;
+
+            if (isVisible) {
+                // Calculate how far the item is through the viewport (0 to 1)
+                const relativeProgress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
+                const movement = (relativeProgress - 0.5) * 150; // Total range of 150px
+
+                if (item.closest('.hero-bg')) {
+                    item.style.transform = `translate3d(0, ${scrolled * 0.3}px, 0)`;
+                } else {
+                    const scale = item.parentElement.classList.contains('active') ? 1 : 1.15;
+                    item.style.transform = `translate3d(0, ${movement}px, 0) scale(${scale})`;
+                }
+            }
+        });
     });
 
     // Force Video Play - Critical for background videos
