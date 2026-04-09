@@ -128,17 +128,23 @@ document.addEventListener('DOMContentLoaded', () => {
     window.showFolderContent = (box, gridId) => {
         const overlay = box.closest('.gallery-overlay');
         const gridWrap = overlay.querySelector(`#${gridId}`);
+        const folders = overlay.querySelector('.gallery-folders-wrap');
         if (gridWrap) {
+            if (folders) folders.style.display = 'none';
             gridWrap.classList.add('active');
             overlay.classList.add('folder-opened');
+            overlay.scrollTo(0, 0);
         }
     };
 
     window.hideFolderContent = (btn) => {
         const gridWrap = btn.closest('.gallery-image-grid-wrap');
         const overlay = btn.closest('.gallery-overlay');
+        const folders = overlay.querySelector('.gallery-folders-wrap');
         gridWrap.classList.remove('active');
         overlay.classList.remove('folder-opened');
+        if (folders) folders.style.display = 'grid';
+        overlay.scrollTo(0, 0);
     };
 
     window.closeProjectGallery = (overlay) => {
