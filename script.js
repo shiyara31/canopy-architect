@@ -1,8 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Direct Page Entry (No Loader)
-    setTimeout(() => {
+    // Loader
+    // Loader logic with Session Storage to avoid repeat popups
+    const loader = document.getElementById('loader');
+    const hasLoaded = sessionStorage.getItem('hasLoaded');
+
+    if (loader && !hasLoaded) {
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    document.body.classList.add('page-loaded');
+                    sessionStorage.setItem('hasLoaded', 'true');
+                }, 600);
+            }, 1000);
+        });
+    } else if (loader) {
+        // Hide instantly if already loaded in this session
+        loader.style.display = 'none';
         document.body.classList.add('page-loaded');
-    }, 100);
+    } else {
+        document.body.classList.add('page-loaded');
+    }
+
+    // Text Cascade (Word-by-word reveal)
+    const cascadeElements = document.querySelectorAll('.cascade-text');
+    cascadeElements.forEach(el => {
+        const words = el.innerText.split(' ');
+        el.innerHTML = words.map((word, i) => 
+            `<span class="cascade-word" style="transition-delay: ${i * 0.05}s">${word}</span>`
+        ).join(' ');
+    });
 
     // Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
@@ -41,43 +69,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Reveal on Scroll
-    const reveals = document.querySelectorAll('.reveal, .reveal-mask, .discipline-item');
+    const reveals = document.querySelectorAll('.reveal, .discipline-item, .cascade-text');
     if (reveals.length > 0) {
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
+                } else if (entry.target.classList.contains('discipline-item')) {
+                    entry.target.classList.remove('active');
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.15 });
 
         reveals.forEach(el => revealObserver.observe(el));
     }
 
-    // Enhanced Parallax Logic
-    const parallaxItems = document.querySelectorAll('.project-img-container img, .hero-bg img, .hero-bg video');
-
+    // Parallax
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
-        const viewportHeight = window.innerHeight;
-
-        parallaxItems.forEach(item => {
-            const rect = item.parentElement.getBoundingClientRect();
-            const isVisible = rect.top < viewportHeight && rect.bottom > 0;
-
-            if (isVisible) {
-                // Calculate how far the item is through the viewport (0 to 1)
-                const relativeProgress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
-                const movement = (relativeProgress - 0.5) * 150; // Total range of 150px
-
-                if (item.closest('.hero-bg')) {
-                    item.style.transform = `translate3d(0, ${scrolled * 0.3}px, 0)`;
-                } else {
-                    const scale = item.parentElement.classList.contains('active') ? 1 : 1.15;
-                    item.style.transform = `translate3d(0, ${movement}px, 0) scale(${scale})`;
-                }
-            }
-        });
+        const heroBg = document.querySelector('.hero-bg img, .hero-bg video');
+        if (heroBg) {
+            heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
+        }
     });
 
     // Force Video Play - Critical for background videos
@@ -128,23 +141,17 @@ document.addEventListener('DOMContentLoaded', () => {
     window.showFolderContent = (box, gridId) => {
         const overlay = box.closest('.gallery-overlay');
         const gridWrap = overlay.querySelector(`#${gridId}`);
-        const folders = overlay.querySelector('.gallery-folders-wrap');
         if (gridWrap) {
-            if (folders) folders.style.display = 'none';
             gridWrap.classList.add('active');
             overlay.classList.add('folder-opened');
-            overlay.scrollTo(0, 0);
         }
     };
 
     window.hideFolderContent = (btn) => {
         const gridWrap = btn.closest('.gallery-image-grid-wrap');
         const overlay = btn.closest('.gallery-overlay');
-        const folders = overlay.querySelector('.gallery-folders-wrap');
         gridWrap.classList.remove('active');
         overlay.classList.remove('folder-opened');
-        if (folders) folders.style.display = 'grid';
-        overlay.scrollTo(0, 0);
     };
 
     window.closeProjectGallery = (overlay) => {
