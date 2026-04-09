@@ -1,16 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Loader
-    const loader = document.getElementById('loader');
-    if (loader) {
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 600);
-            }, 2000);
-        });
-    }
+    // Direct Page Entry (No Loader)
+    setTimeout(() => {
+        document.body.classList.add('page-loaded');
+    }, 100);
 
     // Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
@@ -24,11 +16,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href && href.includes('.html')) {
+                    e.preventDefault();
+                    document.body.classList.add('page-exiting');
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 800);
+                } else {
+                    menuOverlay.classList.remove('active');
+                    menuToggle.classList.remove('open');
+                }
+            });
+        });
+
+        const menuCloseBtn = document.getElementById('menuCloseBtn');
+        if (menuCloseBtn) {
+            menuCloseBtn.addEventListener('click', () => {
                 menuOverlay.classList.remove('active');
                 menuToggle.classList.remove('open');
             });
-        });
+        }
     }
 
     // Reveal on Scroll
@@ -196,7 +205,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500);
         });
 
-        // Close on clicking outside the image
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) {
                 lightbox.classList.remove("active");
@@ -205,5 +213,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 500);
             }
         });
+    }
+
+    // Magic Dots Generation
+    const magicDotsContainer = document.querySelector('.magic-dots');
+    if (magicDotsContainer) {
+        for (let i = 0; i < 200; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.style.top = `${Math.random() * 100}%`;
+            dot.style.left = `${Math.random() * 100}%`;
+            dot.style.animationDuration = `${2 + Math.random() * 3}s`;
+            dot.style.animationDelay = `${Math.random() * 5}s`;
+            magicDotsContainer.appendChild(dot);
+        }
+
+        // Hide dots on first slide (hero)
+        const heroSection = document.getElementById('hero');
+        if (heroSection) {
+            const heroObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        magicDotsContainer.style.opacity = '0';
+                    } else {
+                        magicDotsContainer.style.opacity = '1';
+                    }
+                });
+            }, { threshold: 0.1 });
+            heroObserver.observe(heroSection);
+        }
     }
 });

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Canopy Architects</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="magic-dots"></div>
+
+    <header>
+        <a href="index.html" class="logo">Canopy</a>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="back-to-site" id="menuCloseBtn">BACK TO SITE</div>
+        <ul class="menu-links">
+            <li><a href="index.html" data-text="Home">Home</a></li>
+            <li><a href="about.html" data-text="About Us">About Us</a></li>
+            <li><a href="services.html" data-text="Service">Service</a></li>
+            <li><a href="portfolio.html" data-text="Portfolio">Portfolio</a></li>
+            <li><a href="contact.html" data-text="Contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <section class="hero" style="min-height: 60vh;">
+            <h1 class="reveal">Selected<br><span class="script">Master-works.</span></h1>
+            <p class="hero-sub reveal">A collection of our most evocative interior narratives and architectural explorations.</p>
+        </section>
+
+        <section class="portfolio">
+            <div class="projects-masonry">
+                <div class="project-item reveal" data-project="lounge" data-grid="lounge-grid">
+                    <div class="project-img-container">
+                        <img src="assets/lounge/1.jpg" alt="The Curated Lounge">
+                    </div>
+                    <div class="project-info">
+                        <h4>The Curated Lounge</h4>
+                        <span class="project-label">Residence • Vidyanagar</span>
+                    </div>
+                </div>
+                <div class="project-item reveal" data-project="gilded" data-grid="gilded-grid">
+                    <div class="project-img-container">
+                        <img src="assets/gilded/double height.jpg" alt="The Gilded Refectory">
+                    </div>
+                    <div class="project-info">
+                        <h4>The Gilded Refectory</h4>
+                        <span class="project-label">Residence • Chattanchal</span>
+                    </div>
+                </div>
+                <div class="project-item reveal" data-project="estate" data-grid="mashood-grid">
+                    <div class="project-img-container">
+                        <img src="assets/estate/LIVING.png" alt="The Mashood Estate">
+                    </div>
+                    <div class="project-info">
+                        <h4>The Mashood Estate</h4>
+                        <span class="project-label">Legacy Residence</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 100px;">
+                <a href="javascript:void(0)" class="btn-outline" id="view-all-projects-btn">EXPLORE COLLECTIONS</a>
+            </div>
+        </section>
+
+        <footer>
+            <p style="font-size: 0.7rem; opacity: 0.5;">© 2026 CANOPY ARCHITECTS. ALL RIGHTS RESERVED.</p>
+        </footer>
+    </main>
+
+    <!-- Gallery Overlay -->
+    <div class="gallery-overlay" id="portfolioOverlay">
+        <div class="back-to-home" onclick="closeProjectGallery(document.getElementById('portfolioOverlay'))">BACK TO COLLECTIONS</div>
+        <div class="gallery-folders-wrap">
+            <div class="folder-box" onclick="showFolderContent(this, 'mashood-grid')">
+                <img src="assets/estate/LIVING.png" alt="Collection 01">
+                <span>Collection 01</span>
+            </div>
+            <div class="folder-box" onclick="showFolderContent(this, 'nishad-grid')">
+                <img src="assets/nishad/nishad.png" alt="Collection 02">
+                <span>Collection 02</span>
+            </div>
+            <div class="folder-box" onclick="showFolderContent(this, 'noushad-grid')">
+                <img src="assets/noushad/2.jpg" alt="Collection 03">
+                <span>Collection 03</span>
+            </div>
+            <div class="folder-box" onclick="showFolderContent(this, 'sameer-grid')">
+                <img src="assets/sameer/m1.jpg" alt="Collection 04">
+                <span>Collection 04</span>
+            </div>
+            <div class="folder-box" onclick="showFolderContent(this, 'tahir-grid')">
+                <img src="assets/tahir/2.jpg" alt="Collection 05">
+                <span>Collection 05</span>
+            </div>
+        </div>
+
+        <div class="gallery-image-grid-wrap" id="lounge-grid">
+            <div class="back-to-folders" onclick="hideFolderContent(this)">Back to Collections</div>
+            <div class="gallery-header">
+                <div class="gallery-title-wrap">
+                    <span class="gallery-title">The Curated Lounge</span>
+                    <div class="gallery-meta">
+                        <div class="meta-item"><span>Client:</span> Khader</div>
+                    </div>
+                </div>
+                <div class="gallery-close" id="closePortfolioGallery"><span></span><span></span></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="assets/lounge/1.jpg" alt="Gallery Image"></div>
+                <div class="gallery-item"><img src="assets/lounge/2.jpg" alt="Gallery Image"></div>
+                <div class="gallery-item"><img src="assets/lounge/3.jpg" alt="Gallery Image"></div>
+                <div class="gallery-item"><img src="assets/lounge/4.jpg" alt="Gallery Image"></div>
+            </div>
+        </div>
+        <!-- Note: This would typically include all mashood-grid, nishad-grid, sameer-grid etc. as in index.html -->
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="closeLightbox">&times;</span>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="Lightbox Image">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

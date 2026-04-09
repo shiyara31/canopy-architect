@@ -8,14 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Loader -->
-    <div id="loader">
-        <div class="loader-content">
-            <h1 class="loader-logo">CANOPY</h1>
-            <p class="tagline">Architects</p>
-        </div>
-    </div>
+    <div class="magic-dots"></div>
 
     <!-- Navigation -->
     <header>
@@ -30,11 +23,13 @@
 
     <!-- Overlay Menu -->
     <div class="menu-overlay" id="menuOverlay">
+        <div class="back-to-site" id="menuCloseBtn">BACK TO SITE</div>
         <ul class="menu-links">
-            <li><a href="#hero" data-text="Home">Home</a></li>
-            <li><a href="#vision" data-text="Vision">Vision</a></li>
-            <li><a href="#portfolio" data-text="Portfolio">Portfolio</a></li>
-            <li><a href="#contact" data-text="Contact">Contact</a></li>
+            <li><a href="index.html" data-text="Home">Home</a></li>
+            <li><a href="about.html" data-text="About Us">About Us</a></li>
+            <li><a href="services.html" data-text="Service">Service</a></li>
+            <li><a href="portfolio.html" data-text="Portfolio">Portfolio</a></li>
+            <li><a href="contact.html" data-text="Contact">Contact</a></li>
         </ul>
     </div>
 
@@ -46,56 +41,77 @@
                     <source src="./assets/videos/background.mp4" type="video/mp4">
                 </video>
             </div>
-            <h1 class="reveal">Architectural<br><span class="script">Poetics.</span></h1>
-            <p class="hero-sub reveal">Crafting timeless spaces where minimalist luxury meets global precision. Based in Dubai and Kerala, we redefine the essence of master-works.</p>
-            <div class="hero-btns reveal">
-                <a href="#portfolio" class="btn primary">View Portfolio</a>
-                <a href="#contact" class="btn">Consultation</a>
+            <div class="hero-content">
+                <h1 class="reveal stagger-1">Canopy<br><span class="script">Architects.</span></h1>
+                <p class="hero-sub reveal stagger-2">A luxury architectural studio merging traditional poetics with modern global consultancy.</p>
+                <div class="hero-btns reveal stagger-3">
+                    <a href="#portfolio" class="btn primary">View Portfolio</a>
+                    <a href="#contact" class="btn">Consultation</a>
+                </div>
             </div>
         </section>
 
         <!-- Vision Section -->
         <section class="vision" id="vision">
-    <span class="section-tag">VISION</span>
-                <div class="vision-header">
-                    <div class="brand-element">
-                        <svg class="triangle-logo" viewBox="0 0 100 100" width="30" height="30">
-                            <polygon points="50,15 90,85 10,85" stroke="var(--accent-color)" fill="none" stroke-width="2"/>
-                            <polygon points="50,25 80,80 20,80" stroke="var(--accent-color)" fill="none" stroke-width="1" opacity="0.5"/>
-                        </svg>
-                        <span class="brand-name">CANOPY</span>
-                    </div>
-                    <h2 class="vision-title">Designing<br>Form <span class="ampersand">&</span> Experience.</h2>
+            <div class="reveal center-v-content">
+                <span class="section-tag center">OUR PHILOSOPHY</span>
+                <div class="vision-header-center">
+                    <h2 class="vision-title-center">Articulating the<br><span class="script">Art of Living.</span></h2>
                 </div>
-                <p class="vision-para">We believe that luxury lies in the harmony between structured innovation and organic sustainability. Our method is a narrative told through timeless materials and visionary planning.</p>
-                <div class="vision-footer">
-                    <div class="vision-col">
-                        <span class="footer-label">DESIGN PRECISION</span>
-                        <p class="footer-text">Pushing the boundaries of modern aesthetics with advanced design solutions and spatial intelligence that define longevity.</p>
+                <p class="vision-para-center">We believe that a well-designed space is a reflection of intentionality. Our practice is rooted in the dialogue between raw materials, soft light, and the quiet luxury of silence.</p>
+                <div class="vision-footer-center">
+                    <div class="vision-col-center">
+                        <span class="footer-label">SPATIAL INTELLIGENCE</span>
+                        <p class="footer-text">Designing internal volumes that breathe with purpose and articulated elegance.</p>
                     </div>
-                    <div class="vision-col">
-                        <span class="footer-label">GLOBAL AESTHETICS</span>
-                        <p class="footer-text">Curating architectural languages that resonate with international standards of luxury and local environmental respect.</p>
+                    <div class="vision-col-center">
+                        <span class="footer-label">METICULOUS CURATION</span>
+                        <p class="footer-text">Selecting every material with an eye for longevity and artistic resonance.</p>
                     </div>
                 </div>
             </div>
         </section>
 
 
+        <!-- Portfolio Section Refined -->
+        <section class="portfolio" id="portfolio">
+            <div class="portfolio-header reveal">
+                <span class="section-tag center">SELECTED PORTFOLIO</span>
+                <h2 class="portfolio-title">Bespoke <span class="script">Interiors.</span></h2>
+            </div>
+            <div class="projects-masonry">
+                <div class="project-item reveal" data-project="lounge" data-grid="lounge-grid">
+                    <div class="project-img-container">
+                        <img src="assets/lounge/1.jpg" alt="The Curated Lounge">
+                    </div>
+                    <div class="project-info">
+                        <a href="javascript:void(0)" class="view-project" data-grid="lounge-grid">VIEW PROJECT &rarr;</a>
+                    </div>
+                </div>
+                <div class="project-item reveal" data-project="gilded" data-grid="gilded-grid">
+                    <div class="project-img-container">
+                        <img src="assets/gilded/double height.jpg" alt="The Gilded Refectory">
+                    </div>
+                    <div class="project-info">
+                        <a href="javascript:void(0)" class="view-project" data-grid="gilded-grid">VIEW PROJECT &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Disciplines Section Refined -->
         <section class="disciplines-refined" id="disciplines">
             <div class="disciplines-container">
                 <div class="disciplines-left">
-                    <span class="section-tag">DISCIPLINES</span>
                     <h2 class="sticky-title">Elevating the<br><span class="script">Exceptional.</span></h2>
-                    <p class="sticky-para">Comprehensive architectural consultancy from conceptual design to final master-planning.</p>
+                    <p class="sticky-para">Holistic interior architecture consultancy from conceptual curation to final artistic direction.</p>
                 </div>
                 <div class="disciplines-right">
                     <div class="discipline-item">
                         <span class="discipline-num">01</span>
                         <div class="discipline-info">
-                            <h3>Architecture<br>Consultancy</h3>
-                            <p>High-end conceptual design and master-planning for luxury residential and commercial estates across the globe.</p>
+                            <h3>Interior<br>Architecture</h3>
+                            <p>High-end interior structuring and spatial curation for luxury residential and commercial estates globally.</p>
                         </div>
                     </div>
                     <div class="discipline-item">
@@ -115,34 +131,9 @@
                     <div class="discipline-item">
                         <span class="discipline-num">04</span>
                         <div class="discipline-info">
-                            <h3>Design Direction</h3>
-                            <p>End-to-end oversight and aesthetic coordination from initial concept to the final, polished vision of your masterpiece.</p>
+                            <h3>Bespoke<br>Curation</h3>
+                            <p>End-to-end design oversight and aesthetic coordination from initial palette to the final, polished vision of your home.</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Portfolio Section Refined -->
-        <section class="portfolio" id="portfolio">
-            <div class="portfolio-header reveal">
-                <span class="section-tag center">SELECTED PORTFOLIO</span>
-                <h2 class="portfolio-title">Curated <span class="script">Master-works</span></h2>
-            </div>
-            <div class="projects-masonry">
-                <div class="project-item reveal" data-project="lounge" data-grid="lounge-grid">
-                    <div class="project-img-container">
-                        <img src="assets/lounge/1.jpg" alt="The Curated Lounge">
-                    </div>
-                    <div class="project-info">
-                        <a href="javascript:void(0)" class="view-project" data-grid="lounge-grid">VIEW PROJECT &rarr;</a>
-                    </div>
-                </div>
-                <div class="project-item reveal" data-project="gilded" data-grid="gilded-grid">
-                    <div class="project-img-container">
-                        <img src="assets/gilded/double height.jpg" alt="The Gilded Refectory">
-                    </div>
-                    <div class="project-info">
-                        <a href="javascript:void(0)" class="view-project" data-grid="gilded-grid">VIEW PROJECT &rarr;</a>
                     </div>
                 </div>
             </div>
