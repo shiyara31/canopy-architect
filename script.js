@@ -135,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Gallery Logic - General Functions
     const openProjectGallery = (overlay, gridId = null) => {
         if (overlay) {
+            if (window.lenis) window.lenis.stop();
             overlay.style.display = "flex";
             requestAnimationFrame(() => {
                 overlay.classList.add("active");
@@ -191,6 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.closeProjectGallery = (overlay) => {
         if (overlay) {
             overlay.classList.remove("active");
+            if (window.lenis) window.lenis.start();
             setTimeout(() => {
                 overlay.style.display = "none";
                 document.body.style.overflow = "auto";

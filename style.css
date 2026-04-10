@@ -816,6 +816,23 @@ header {
     overflow: hidden;
 }
 
+/* Scroll Animation for Project Items */
+.projects-masonry .project-item.reveal {
+    opacity: 0;
+    transform: translateY(120px) scale(0.9) rotate(3deg);
+    transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center center;
+}
+
+.projects-masonry .project-item.reveal:nth-child(even) {
+    transform: translateY(120px) scale(0.9) rotate(-3deg);
+}
+
+.projects-masonry .project-item.reveal.active {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+}
+
 .project-item.wider {
     grid-column: span 2;
 }
