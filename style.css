@@ -1318,6 +1318,35 @@ footer {
     color: var(--accent-color);
 }
 
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    line-height: 1;
+    z-index: 4001;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    padding: 20px;
+    user-select: none;
+}
+
+.lightbox-nav:hover {
+    opacity: 1;
+    color: var(--accent-color);
+}
+
+.lightbox-prev {
+    left: 20px;
+}
+
+.lightbox-next {
+    right: 20px;
+}
+
 .gallery-title {
     font-family: var(--font-heading);
     font-size: 2.2rem;
@@ -1659,4 +1688,25 @@ footer {
     .portfolio-title { font-size: 2.8rem; }
     .project-img-container { height: 300px; }
     .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 5px; }
+}
+
+/* Gallery Smooth Scroll Setup */
+body.gallery-active > *:not(.gallery-overlay):not(.lightbox):not(script) {
+    display: none !important;
+}
+body.gallery-active {
+    background-color: var(--bg-color);
+}
+body.gallery-active .gallery-overlay {
+    position: relative !important;
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
+    padding-bottom: 10px;
+}
+
+body.gallery-active .gallery-image-grid-wrap.active {
+    position: relative !important;
+    height: auto !important;
+    overflow: visible !important;
 }

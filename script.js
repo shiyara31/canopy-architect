@@ -133,13 +133,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Gallery Logic - General Functions
+    let savedScrollPos = 0;
+
     const openProjectGallery = (overlay, gridId = null) => {
         if (overlay) {
-            if (window.lenis) window.lenis.stop();
+            overlay.removeAttribute('data-lenis-prevent');
+            savedScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+            document.body.classList.add('gallery-active');
+            
             overlay.style.display = "flex";
+            if(window.lenis) {
+                window.lenis.scrollTo(0, {immediate: true});
+            } else {
+                window.scrollTo(0, 0);
+            }
+
             requestAnimationFrame(() => {
                 overlay.classList.add("active");
-                document.body.style.overflow = "hidden";
                 
                 // Reset view state
                 const folders = overlay.querySelector('.gallery-folders-wrap');
@@ -174,7 +184,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
             gridWrap.classList.add('active');
             overlay.classList.add('folder-opened');
-            overlay.scrollTop = 0; // Reset scroll to top of project details
+            if(window.lenis) {
+                window.lenis.scrollTo(0, {immediate: true});
+            } else {
+                window.scrollTo(0, 0);
+            }
         }
     };
 
@@ -186,16 +200,24 @@ document.addEventListener('DOMContentLoaded', () => {
         gridWrap.classList.remove('active');
         overlay.classList.remove('folder-opened');
         if (folders) folders.style.display = 'grid';
-        overlay.scrollTop = 0;
+        if(window.lenis) {
+            window.lenis.scrollTo(0, {immediate: true});
+        } else {
+            window.scrollTo(0, 0);
+        }
     };
 
     window.closeProjectGallery = (overlay) => {
         if (overlay) {
             overlay.classList.remove("active");
-            if (window.lenis) window.lenis.start();
             setTimeout(() => {
                 overlay.style.display = "none";
-                document.body.style.overflow = "auto";
+                document.body.classList.remove('gallery-active');
+                if (window.lenis) {
+                    window.lenis.scrollTo(savedScrollPos, {immediate: true});
+                } else {
+                    window.scrollTo(0, savedScrollPos);
+                }
                 
                 // Reset View for next time
                 const folders = overlay.querySelector('.gallery-folders-wrap');
@@ -246,14 +268,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightbox = document.getElementById("lightbox");
     const lightboxImg = document.getElementById("lightboxImg");
     const closeLightbox = document.getElementById("closeLightbox");
+    const lightboxPrev = document.getElementById("lightboxPrev");
+    const lightboxNext = document.getElementById("lightboxNext");
+
+    let currentGalleryImages = [];
+    let currentImageIndex = 0;
 
     document.querySelectorAll('.gallery-item').forEach(item => {
         item.addEventListener('click', (e) => {
             e.stopPropagation(); // Prevent gallery overlay from handling this
-            const imgSrc = item.querySelector('img').src;
+            
+            const grid = item.closest('.gallery-grid');
+            if (grid) {
+                const imgElements = Array.from(grid.querySelectorAll('.gallery-item img'));
+                currentGalleryImages = imgElements.map(img => img.src);
+                currentImageIndex = imgElements.indexOf(item.querySelector('img'));
+            } else {
+                currentGalleryImages = [item.querySelector('img').src];
+                currentImageIndex = 0;
+            }
+
             if (lightbox && lightboxImg) {
-                lightboxImg.src = imgSrc;
+                lightboxImg.src = currentGalleryImages[currentImageIndex];
                 lightbox.style.display = "flex";
+                if(window.lenis) window.lenis.stop();
                 setTimeout(() => {
                     lightbox.classList.add("active");
                 }, 10);
@@ -261,9 +299,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    if (lightboxPrev && lightboxNext) {
+        lightboxPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentGalleryImages.length > 1) {
+                currentImageIndex = (currentImageIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
+                lightboxImg.src = currentGalleryImages[currentImageIndex];
+            }
+        });
+
+        lightboxNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (currentGalleryImages.length > 1) {
+                currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
+                lightboxImg.src = currentGalleryImages[currentImageIndex];
+            }
+        });
+    }
+
     if (closeLightbox && lightbox) {
         closeLightbox.addEventListener('click', () => {
             lightbox.classList.remove("active");
+            if(window.lenis) window.lenis.start();
             setTimeout(() => {
                 lightbox.style.display = "none";
             }, 500);
@@ -272,6 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) {
                 lightbox.classList.remove("active");
+                if(window.lenis) window.lenis.start();
                 setTimeout(() => {
                     lightbox.style.display = "none";
                 }, 500);
