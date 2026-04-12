@@ -651,7 +651,8 @@ header {
 }
 
 .footer-text {
-    font-family: var(--font-sans);
+    font-family: var(--font-serif);
+    font-style: italic;
     font-size: 1rem;
     line-height: 1.6;
     color: var(--text-color);
@@ -747,6 +748,118 @@ header {
 }
 
 .discipline-num {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+/* Stacking Process Slabs */
+.process-stack-section {
+    position: relative;
+    padding: 100px 0;
+    background-color: var(--bg-color);
+}
+
+.process-stack-container {
+    padding: 0 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.process-slab {
+    position: sticky;
+    height: 40vh;
+    width: 100%;
+    margin-bottom: 12vh; /* This creates the scroll gap to next slab */
+    border-radius: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 8%;
+    box-shadow: 0 -20px 40px rgba(0,0,0,0.3);
+    overflow: hidden;
+    transition: transform 0.5s ease;
+}
+
+.slab-1 { background-color: #121212; color: #fff; z-index: 1; top: 15vh; }
+.slab-2 { background-color: #1a1a1a; color: #fff; z-index: 2; top: 18vh; }
+.slab-3 { background-color: #2b2620; color: #fff; z-index: 3; top: 21vh; }
+.slab-4 { background-color: #4a4035; color: #fff; z-index: 4; top: 24vh; }
+.slab-5 { background-color: var(--accent-color); color: #0d0d0d; z-index: 5; top: 27vh; }
+
+.slab-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+}
+
+.slab-info h3 {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.slab-info p {
+    font-size: 1.4rem;
+    font-family: var(--font-serif);
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.slab-step {
+    font-family: var(--font-sans);
+    font-size: 15rem;
+    font-weight: 700;
+    opacity: 0.05;
+    position: absolute;
+    right: 5%;
+    bottom: -20px;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .process-slab {
+        height: auto;
+        min-height: 200px; /* Much smaller mobile height */
+        padding: 40px 25px;
+        border-radius: 40px;
+        margin-bottom: 5vh;
+        box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+    }
+    
+    /* Staggered mobile tops to ensure overlap feeling */
+    .slab-1 { top: 80px !important; }
+    .slab-2 { top: 105px !important; }
+    .slab-3 { top: 130px !important; }
+    .slab-4 { top: 155px !important; }
+    .slab-5 { top: 180px !important; }
+
+    .slab-content { 
+        grid-template-columns: 1fr; 
+        gap: 15px; 
+        text-align: left;
+    }
+    
+    .slab-info h3 { 
+        font-size: 1.8rem; 
+        margin-bottom: 10px;
+    }
+    
+    .slab-info p { 
+        font-size: 0.95rem; 
+        line-height: 1.4;
+    }
+    
+    .slab-step { 
+        font-size: 5rem; 
+        right: 15px;
+        bottom: 10px;
+    }
+}
     font-family: var(--font-sans);
     font-size: 0.9rem;
     color: var(--accent-color);

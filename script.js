@@ -401,4 +401,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
         statsCounters.forEach(counter => statsObserver.observe(counter));
     }
+
+    // Process Stacking Slabs Logic (Parallax and Fade)
+    const slabs = document.querySelectorAll('.process-slab');
+    if (slabs.length > 0) {
+        window.addEventListener('scroll', () => {
+            const viewportHeight = window.innerHeight;
+            
+            slabs.forEach((slab, index) => {
+                const rect = slab.getBoundingClientRect();
+                const scrollProgress = (viewportHeight - rect.top) / viewportHeight;
+                
+                // Subtle scale effect when entering
+                if (scrollProgress > 0 && scrollProgress < 1.5) {
+                    const info = slab.querySelector('.slab-info');
+                    const step = slab.querySelector('.slab-step');
+                    
+                    if (info) {
+                        const translateY = (1 - Math.min(scrollProgress, 1)) * 50;
+                        info.style.transform = `translateY(${translateY}px)`;
+                        info.style.opacity = Math.min(scrollProgress * 2, 1);
+                    }
+                    
+                    if (step) {
+                        const stepTranslateY = (1 - Math.min(scrollProgress, 1)) * 100;
+                        step.style.transform = `translateY(${stepTranslateY}px)`;
+                    }
+                }
+
+                // Stacking Scale Reduction (Cards feel smaller as they are covered)
+                const topThreshold = 200; // px from top
+                if (rect.top < topThreshold) {
+                    const factor = Math.max(0.9, 1 - (topThreshold - rect.top) / 2000);
+                    slab.style.transform = `scale(${factor})`;
+                } else {
+                    slab.style.transform = `scale(1)`;
+                }
+            });
+        });
+    }
 });
