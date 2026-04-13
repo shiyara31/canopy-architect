@@ -1230,6 +1230,132 @@ footer {
     color: var(--accent-color);
 }
 
+.phone-number-link, .plus-fix {
+    font-family: var(--font-sans) !important;
+    font-weight: 500;
+    letter-spacing: 1px;
+    display: inline-block;
+}
+
+/* Narrative Side Layout Redesign */
+.about-narrative-section {
+    padding: 100px 5% 150px;
+    background-color: var(--bg-color);
+}
+
+.narrative-container {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    max-width: 1400px;
+    margin: 0 auto 150px;
+    position: relative;
+}
+
+.narrative-container.reverse {
+    flex-direction: row-reverse;
+}
+
+.narrative-img-box {
+    flex: 1.2;
+    height: 700px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.narrative-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+    transition: transform 1.5s ease;
+}
+
+.narrative-container:hover .narrative-img-box img {
+    transform: scale(1.05);
+}
+
+.narrative-text-card {
+    flex: 1;
+    background: #151515; /* Slightly lighter than bg for depth */
+    padding: 80px 60px;
+    margin-left: -60px; /* Reduced overlap for 'side box' look */
+    z-index: 2;
+    border: 1px solid var(--accent-color); /* Prominent golden outline */
+    box-shadow: 30px 40px 100px rgba(0,0,0,0.5);
+    transition: var(--transition);
+}
+
+.narrative-container.reverse .narrative-text-card {
+    margin-left: 0;
+    margin-right: -60px; /* Reduced overlap for 'side box' look */
+}
+
+.narrative-text-card:hover {
+    border-color: var(--accent-color);
+    transform: translateY(-10px);
+}
+
+.narrative-label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 25px;
+    display: block;
+}
+
+.narrative-title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 35px;
+}
+
+.narrative-para {
+    font-family: var(--font-body);
+    font-size: 1.25rem; /* Increased for desktop premium balance */
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 25px;
+}
+
+@media (max-width: 1024px) {
+    .narrative-container, .narrative-container.reverse {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .narrative-img-box {
+        width: 100%;
+        height: 450px;
+    }
+    
+    .narrative-text-card {
+        width: 92%;
+        margin: -100px auto 0 !important; /* Stacked overlap */
+        padding: 35px 30px;
+    }
+    
+    .narrative-title {
+        font-size: 2.2rem;
+        margin-bottom: 25px;
+    }
+
+    .narrative-para {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .narrative-label {
+        font-size: 0.65rem;
+        margin-bottom: 15px;
+    }
+}
+
+
 /* Responsive */
 /* Responsive Optimization */
 
