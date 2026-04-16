@@ -15,7 +15,7 @@
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
 </head>
 <body>
-    <div class="magic-dots"></div>
+
 
     <!-- Loader -->
     <div id="loader">
@@ -26,7 +26,7 @@
     </div>
 
     <!-- Navigation -->
-    <header>
+    <header class="header-over-dark">
         <a href="index.html" class="logo">Canopy</a>
         <div class="header-locations">GLOBAL CONSULTANCY | DUBAI &bull; KERALA</div>
         <div class="menu-toggle" id="menuToggle">
@@ -43,7 +43,6 @@
             <li><a href="index.html" data-text="Home">Home</a></li>
             <li><a href="about.html" data-text="About Us">About Us</a></li>
             <li><a href="services.html" data-text="Service">Service</a></li>
-            <li><a href="portfolio.html" data-text="Portfolio">Portfolio</a></li>
             <li><a href="contact.html" data-text="Contact">Contact</a></li>
         </ul>
         <div class="menu-footer">
@@ -58,7 +57,7 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero" id="hero">
+        <section class="hero dark" id="hero">
             <div class="hero-bg">
                 <video autoplay muted loop playsinline poster="./assets/hero.png">
                     <source src="./assets/videos/background.mp4" type="video/mp4">
@@ -66,7 +65,7 @@
             </div>
             <h1 class="reveal">
                 <span class="masked-wrap"><span class="masked-reveal">Canopy</span></span>
-                <span class="masked-wrap"><span class="masked-reveal script" style="transition-delay: 0.15s;">Interiors.</span></span>
+                <span class="masked-wrap"><span class="masked-reveal script">Interiors.</span></span>
             </h1>
             <p class="hero-sub reveal cascade-text">A luxury interior design studio merging traditional poetics with modern global curation.</p>
             <div class="hero-btns reveal">
@@ -74,119 +73,122 @@
             </div>
         </section>
 
-        <!-- Vision Section -->
-        <section class="vision" id="vision">
-            <div class="reveal center-v-content">
-                <span class="section-tag center">OUR PHILOSOPHY</span>
-                <div class="vision-header-center">
-                    <h2 class="vision-title-center reveal">
-                        <span class="masked-wrap"><span class="masked-reveal">Articulating the</span></span>
-                        <span class="masked-wrap"><span class="masked-reveal script" style="transition-delay: 0.15s;">Art of Living.</span></span>
-                    </h2>
+        <!-- Intro Split Section -->
+        <section class="intro-split" id="about-intro">
+            <div class="intro-split-img reveal">
+                <img src="assets/about_intro_render.png" alt="Architectural Rendering Excellence">
+            </div>
+            <div class="intro-split-text">
+                <span class="intro-label reveal">ESTABLISHED EXCELLENCE</span>
+                <h2 class="intro-title reveal">
+                    <span class="masked-wrap"><span class="masked-reveal">Get to Know Us!</span></span>
+                </h2>
+                <div class="intro-para reveal">
+                    <p>We are a company that dedicates ourselves to provide the most comprehensive Architectural Rendering and Designing Solutions.</p>
+                    <p style="margin-top: 20px;">Using state of the art equipments, up-to-date software, and high-end rendering tools, we put in our utmost care and precision in envisioning your designs. Our skilled designers pay close attention to every intricate detail, which brings out the character in space. We will turn ideas from concept to visualization in order to come as close to reality as possible.</p>
                 </div>
-                <p class="vision-para-center" style="font-size: 1.6rem; max-width: 1000px; margin: 0 auto 80px;">Canopy Architects is a luxury interior design and fit-out company serving clients across the UAE and Kerala. We specialize in creating sophisticated residential and corporate spaces that combine elegance, functionality, and precision craftsmanship. From concept to completion, we deliver bespoke interiors that reflect our clients’ vision with excellence and attention to detail.</p>
-                <div class="vision-footer-center">
-                    <div class="vision-col-center">
-                        <span class="footer-label">SPATIAL INTELLIGENCE</span>
-                        <p class="footer-text">Designing internal volumes that breathe with purpose and articulated elegance.</p>
-                    </div>
-                    <div class="vision-col-center">
-                        <span class="footer-label">METICULOUS CURATION</span>
-                        <p class="footer-text">Selecting every material with an eye for longevity and artistic resonance.</p>
-                    </div>
+                <div class="reveal">
+                    <a href="about.html" class="btn primary">Discover More</a>
                 </div>
             </div>
         </section>
 
 
         <!-- Portfolio Section Refined -->
-        <section class="portfolio" id="portfolio">
+        <!-- Comprehensive Portfolio Grid -->
+        <section class="portfolio bg-soft" id="portfolio">
             <div class="portfolio-header reveal">
-                <span class="section-tag center">SELECTED PORTFOLIO</span>
-                <h2 class="portfolio-title reveal">
+                <span class="section-tag center">OUR COLLECTIONS</span>
+                <h2 class="portfolio-title">
                     <span class="masked-wrap"><span class="masked-reveal">Bespoke</span></span>
-                    <span class="masked-wrap"><span class="masked-reveal script" style="transition-delay: 0.15s;">Interiors.</span></span>
+                    <span class="masked-wrap"><span class="masked-reveal script">Master-works.</span></span>
                 </h2>
             </div>
+
+            <!-- All Projects Grid -->
+
             <div class="projects-masonry">
-                <div class="project-item reveal" data-project="lounge" data-grid="lounge-grid">
+                <!-- Project 01: The Curated Lounge -->
+                <div class="project-item reveal" data-category="residential" data-project="lounge" data-grid="lounge-grid">
                     <div class="project-img-container">
-                        <img src="assets/lounge/1.jpg" alt="The Curated Lounge">
+                        <img src="assets/lounge/1.jpg" alt="The Curated Lounge" data-lenis-prevent>
                     </div>
                     <div class="project-info">
-                        <a href="javascript:void(0)" class="view-project" data-grid="lounge-grid">VIEW PROJECT &rarr;</a>
+                        <h4>THE CURATED LOUNGE</h4>
+                        <a href="javascript:void(0)" class="view-project" data-grid="lounge-grid">VIEW PROJECT</a>
                     </div>
                 </div>
-                <div class="project-item reveal" data-project="gilded" data-grid="gilded-grid">
+
+                <!-- Project 02: Gilded Refectory -->
+                <div class="project-item reveal" data-category="residential" data-project="gilded" data-grid="gilded-grid">
                     <div class="project-img-container">
                         <img src="assets/gilded/double height.jpg" alt="The Gilded Refectory">
                     </div>
                     <div class="project-info">
-                        <a href="javascript:void(0)" class="view-project" data-grid="gilded-grid">VIEW PROJECT &rarr;</a>
+                        <h4>GILDED REFECTORY</h4>
+                        <a href="javascript:void(0)" class="view-project" data-grid="gilded-grid">VIEW PROJECT</a>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Disciplines Section Refined -->
-        <section class="disciplines-refined" id="disciplines">
-            <div class="disciplines-container">
-                <div class="disciplines-left">
-                    <h2 class="sticky-title reveal">
-                        <span class="masked-wrap"><span class="masked-reveal">Interior</span></span>
-                        <span class="masked-wrap"><span class="masked-reveal script" style="transition-delay: 0.15s;">Curation.</span></span>
-                    </h2>
-                    <p class="sticky-para">Holistic interior design consultancy from conceptual curation to final artistic direction.</p>
-                </div>
-                <div class="disciplines-right">
-                    <div class="discipline-item">
-                        <span class="discipline-num">01</span>
-                        <div class="discipline-info">
-                            <h3>Interior<br>Curation</h3>
-                            <p>High-end interior structuring and spatial curation for luxury residential and commercial estates globally.</p>
-                        </div>
+                <!-- Project 03: Estate Collection -->
+                <div class="project-item reveal" data-category="villas" data-project="mashood" data-grid="mashood-grid">
+                    <div class="project-img-container">
+                        <img src="assets/estate/LIVING.png" alt="Estate Collection">
                     </div>
-                    <div class="discipline-item">
-                        <span class="discipline-num">02</span>
-                        <div class="discipline-info">
-                            <h3>Landscape<br>Master-planning</h3>
-                            <p>Curated outdoor environments that blend modern aesthetics with functional elegance and ecological respect.</p>
-                        </div>
-                    </div>
-                    <div class="discipline-item">
-                        <span class="discipline-num">03</span>
-                        <div class="discipline-info">
-                            <h3>Spatial<br>Artistry</h3>
-                            <p>Seamless execution of specialized interior elements with meticulous attention to detail and high-end materials.</p>
-                        </div>
-                    </div>
-                    <div class="discipline-item">
-                        <span class="discipline-num">04</span>
-                        <div class="discipline-info">
-                            <h3>Bespoke<br>Curation</h3>
-                            <p>End-to-end design oversight and aesthetic coordination from initial palette to the final, polished vision of your home.</p>
-                        </div>
+                    <div class="project-info">
+                        <h4>THE ESTATE SUITE</h4>
+                        <a href="javascript:void(0)" class="view-project" data-grid="mashood-grid">VIEW PROJECT</a>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Final CTA Section -->
-        <section class="final-cta">
-            <div class="reveal center-content">
-                <span class="section-tag center">EXPLORE ALL WORKS</span>
-                <h2 class="cta-title reveal">
-                    <span class="masked-wrap"><span class="masked-reveal">See what we can</span></span>
-                    <span class="masked-wrap"><span class="masked-reveal script" style="transition-delay: 0.15s;">Design Together.</span></span>
-                </h2>
-                <div class="cta-btn-wrap">
-                    <a href="javascript:void(0)" class="btn-outline" id="view-all-projects-btn">VIEW ALL PROJECTS</a>
+                <!-- Project 04: Nishad Residence -->
+                <div class="project-item reveal" data-category="residential" data-project="nishad" data-grid="nishad-grid">
+                    <div class="project-img-container">
+                        <img src="assets/nishad/nishad.png" alt="Nishad Residence">
+                    </div>
+                    <div class="project-info">
+                        <h4>NISHAD RESIDENCE</h4>
+                        <a href="javascript:void(0)" class="view-project" data-grid="nishad-grid">VIEW PROJECT</a>
+                    </div>
+                </div>
+
+                <!-- Project 05: Noushad Project -->
+                <div class="project-item reveal" data-category="residential" data-project="noushad" data-grid="noushad-grid">
+                    <div class="project-img-container">
+                        <img src="assets/noushad/2.jpg" alt="Noushad Collection">
+                    </div>
+                    <div class="project-info">
+                        <h4>NOUSHAD PROJECT</h4>
+                        <a href="javascript:void(0)" class="view-project" data-grid="noushad-grid">VIEW PROJECT</a>
+                    </div>
+                </div>
+
+                <!-- Project 06: Sameer Villa -->
+                <div class="project-item reveal" data-category="villas" data-project="sameer" data-grid="sameer-grid">
+                    <div class="project-img-container">
+                        <img src="assets/sameer/m1.jpg" alt="Sameer Villa">
+                    </div>
+                    <div class="project-info">
+                        <h4>SAMEER VILLA</h4>
+                        <a href="javascript:void(0)" class="view-project" data-grid="sameer-grid">VIEW PROJECT</a>
+                    </div>
+                </div>
+
+                <!-- Project 07: Tahir Residence -->
+                <div class="project-item reveal" data-category="villas" data-project="tahir" data-grid="tahir-grid">
+                    <div class="project-img-container">
+                        <img src="assets/tahir/2.jpg" alt="Tahir Residence">
+                    </div>
+                    <div class="project-info">
+                        <h4>TAHIR RESIDENCE</h4>
+                        <a href="javascript:void(0)" class="view-project" data-grid="tahir-grid">VIEW PROJECT</a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section class="contact-section" id="contact-inquiry">
+        <section class="contact-section white" id="contact-inquiry">
             <div class="contact-container reveal">
                 <div class="contact-left">
                     <div class="brand-element">

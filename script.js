@@ -233,34 +233,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const portfolioOverlay = document.getElementById("portfolioOverlay");
     const closePortfolio = document.getElementById("closePortfolioGallery");
 
-    // "VIEW ALL PROJECTS" Button
-    const viewAllBtn = document.getElementById("view-all-projects-btn");
-    if (viewAllBtn) {
-        viewAllBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            openProjectGallery(portfolioOverlay);
+    // Handle Project Card and View Project Clicks
+    const initProjectClicks = () => {
+        document.querySelectorAll('.project-item').forEach((item) => {
+            item.style.cursor = "pointer";
+            item.addEventListener("click", (e) => {
+                // Open gallery if not clicking a link elsewhere
+                if (e.target.tagName !== 'A' || e.target.classList.contains('view-project')) {
+                    e.preventDefault();
+                    const gridId = item.getAttribute('data-grid');
+                    openProjectGallery(portfolioOverlay, gridId);
+                }
+            });
         });
-    }
 
-    document.querySelectorAll('.project-item').forEach((item) => {
-        item.style.cursor = "pointer";
-        item.addEventListener("click", (e) => {
-            if (e.target.tagName !== 'A') {
-                const gridId = item.getAttribute('data-grid');
+        // Specific handling for buttons if they are nested differently
+        document.querySelectorAll('.view-project').forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const gridId = btn.getAttribute('data-grid');
                 openProjectGallery(portfolioOverlay, gridId);
-            }
+            });
         });
-    });
+    };
 
-    // View Buttons on Main Cards (if any remain)
-    document.querySelectorAll('.view-project').forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            const gridId = btn.getAttribute('data-grid');
-            openProjectGallery(portfolioOverlay, gridId);
-        });
-    });
+    initProjectClicks();
 
     if (closePortfolio) closePortfolio.addEventListener("click", (e) => { e.preventDefault(); closeProjectGallery(portfolioOverlay); });
 
@@ -337,34 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Magic Dots Generation
-    const magicDotsContainer = document.querySelector('.magic-dots');
-    if (magicDotsContainer) {
-        for (let i = 0; i < 200; i++) {
-            const dot = document.createElement('div');
-            dot.className = 'dot';
-            dot.style.top = `${Math.random() * 100}%`;
-            dot.style.left = `${Math.random() * 100}%`;
-            dot.style.animationDuration = `${2 + Math.random() * 3}s`;
-            dot.style.animationDelay = `${Math.random() * 5}s`;
-            magicDotsContainer.appendChild(dot);
-        }
 
-        // Hide dots on first slide (hero)
-        const heroSection = document.getElementById('hero');
-        if (heroSection) {
-            const heroObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        magicDotsContainer.style.opacity = '0';
-                    } else {
-                        magicDotsContainer.style.opacity = '1';
-                    }
-                });
-            }, { threshold: 0.1 });
-            heroObserver.observe(heroSection);
-        }
-    }
 
     // Stats Counter Animation
     const statsCounters = document.querySelectorAll('.stat-counter');
@@ -440,4 +411,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    // Navbar Scroll Background
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
 });
