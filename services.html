@@ -19,13 +19,17 @@
 
     <header>
         <a href="index.html" class="logo">Canopy</a>
-        <div class="header-right">
-            <a href="index.html" class="back-home-link"><span>&larr;</span> HOME</a>
-            <div class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+        <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </header>
 
@@ -33,8 +37,9 @@
         <div class="back-to-site" id="menuCloseBtn">BACK TO SITE</div>
         <ul class="menu-links">
             <li><a href="index.html" data-text="Home">Home</a></li>
+            <li><a href="portfolio.html" data-text="Portfolio">Portfolio</a></li>
             <li><a href="about.html" data-text="About Us">About Us</a></li>
-            <li><a href="services.html" data-text="Service">Service</a></li>
+            <li><a href="services.html" data-text="Services">Services</a></li>
             <li><a href="contact.html" data-text="Contact">Contact</a></li>
         </ul>
         <div class="menu-footer">
@@ -50,7 +55,7 @@
     <main>
         <section class="hero" style="min-height: 80vh;">
             <div class="hero-bg">
-                <img src="./assets/services_hero.png" alt="Services Hero" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.5;">
+                <img src="assets/estate/LIVING.png" alt="Spatial Artistry" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.6;">
             </div>
             <h1 class="reveal">
                 <span class="masked-wrap"><span class="masked-reveal">Spatial</span></span>
@@ -59,130 +64,123 @@
             <p class="hero-sub reveal cascade-text">We provide bespoke design direction across multiple interior disciplines, ensuring a seamless transition from concept to realization.</p>
         </section>
 
-        <section class="vision">
-            <div class="reveal center-v-content">
+        <section class="vision-premium bg-soft reveal">
+            <div class="premium-card reveal">
                 <span class="section-tag center">TYPES OF WORK</span>
-                <p class="vision-para-center">Our work spans private villas, luxury residences, corporate headquarters, boutique retail, and signature hospitality environments—each project conceived as a unique expression of identity and elevated living. From visionary concept to flawless turnkey execution, every detail is meticulously orchestrated using the finest materials, artisanal craftsmanship, and cutting-edge innovation.<br><br>At Canopy Architects, we do not simply design interiors—we craft iconic spaces that define luxury, exclusivity, and enduring value.</p>
+                <h2 class="premium-heading">Defining the <br><span class="script">Landscape.</span></h2>
+                <p class="premium-text">Our work spans private villas, luxury residences, corporate headquarters, boutique retail, and signature hospitality environments—each project conceived as a unique expression of identity and elevated living. From visionary concept to flawless turnkey execution, every detail is meticulously orchestrated using the finest materials, artisanal craftsmanship, and cutting-edge innovation.</p>
+                <div class="premium-line"></div>
+                <p class="premium-statement">At Canopy Architects, we do not simply design interiors—we craft iconic spaces that define luxury, exclusivity, and enduring value.</p>
             </div>
         </section>
 
-        <section class="process-stack-section bg-soft">
-            <div class="reveal" style="text-align: center; margin-bottom: 80px;">
-                <span class="section-tag center">OUR PROCESS</span>
-                <h2 class="vision-title-center">The Journey of<br><span class="script">Creation.</span></h2>
-            </div>
-
-            <div class="process-stack-container">
-                <!-- Step 1 -->
-                <div class="process-slab slab-1 reveal">
-                    <div class="slab-content">
-                        <div class="slab-icon">
-                            <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <section class="home-process bg-soft reveal" id="process">
+            <div class="process-container">
+                <div class="process-header reveal">
+                    <span class="section-tag center">OUR METHODOLOGY</span>
+                    <h2 class="process-main-title">The Process</h2>
+                </div>
+                
+                <div class="process-row">
+                    <!-- Step 1 -->
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="40" cy="35" r="15"/>
+                                <circle cx="60" cy="35" r="15" stroke-dasharray="2 2"/>
+                                <path d="M25 70c0-8 7-15 15-15s15 7 15 15M45 70c0-8 7-15 15-15s15 7 15 15" stroke-linecap="round"/>
+                            </svg>
                         </div>
-                        <div class="slab-info">
+                        <div class="process-info">
+                            <span class="step-label">STEP 1</span>
                             <h3>Consultation</h3>
                             <p>Understanding client vision and project framework.</p>
                         </div>
-                        <div class="slab-step">01</div>
                     </div>
-                </div>
 
-                <!-- Step 2 -->
-                <div class="process-slab slab-2 reveal">
-                    <div class="slab-content">
-                        <div class="slab-icon">
-                            <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.5 1.5"></path><path d="M7 11l5-5"></path></svg>
+                    <div class="process-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="20" y="20" width="60" height="60" rx="2"/>
+                                <path d="M20 40h60M40 20v60M20 60h60M60 20v60"/>
+                                <path d="M35 35l30 30M35 65l30-30" stroke-width="1" opacity="0.5"/>
+                            </svg>
                         </div>
-                        <div class="slab-info">
+                        <div class="process-info">
+                            <span class="step-label">STEP 2</span>
                             <h3>Concept Design</h3>
                             <p>Mood boards, preliminary layouts, and aesthetic direction.</p>
                         </div>
-                        <div class="slab-step">02</div>
                     </div>
-                </div>
 
-                <!-- Step 3 -->
-                <div class="process-slab slab-3 reveal">
-                    <div class="slab-content">
-                        <div class="slab-icon">
-                            <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    <div class="process-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M50 15L85 35V65L50 85L15 65V35L50 15Z"/>
+                                <path d="M50 15V50M15 35L50 50M85 35L50 50M50 85V50"/>
+                                <circle cx="50" cy="50" r="5" fill="currentColor"/>
+                            </svg>
                         </div>
-                        <div class="slab-info">
+                        <div class="process-info">
+                            <span class="step-label">STEP 3</span>
                             <h3>Design Development</h3>
                             <p>Photorealistic 3D visuals and meticulous material selection.</p>
                         </div>
-                        <div class="slab-step">03</div>
                     </div>
-                </div>
 
-                <!-- Step 4 -->
-                <div class="process-slab slab-4 reveal">
-                    <div class="slab-content">
-                        <div class="slab-icon">
-                            <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m2 22 1-1h3l9-9"></path><path d="M3 21v-3l9-9"></path><path d="m15 6 3.4-3.4a2.1 2.1 0 1 1 3 3L18 9l.4.4a2.1 2.1 0 1 1-3 3l-4-4"></path></svg>
+                    <div class="process-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M20 80V30L50 15L80 30V80H20Z"/>
+                                <path d="M35 80V55H65V80"/>
+                                <path d="M50 15V80M20 50H80" stroke-dasharray="2 2"/>
+                            </svg>
                         </div>
-                        <div class="slab-info">
+                        <div class="process-info">
+                            <span class="step-label">STEP 4</span>
                             <h3>Execution</h3>
                             <p>Superior on-site work and seamless project management.</p>
                         </div>
-                        <div class="slab-step">04</div>
                     </div>
-                </div>
 
-                <!-- Step 5 -->
-                <div class="process-slab slab-5 reveal">
-                    <div class="slab-content">
-                        <div class="slab-icon">
-                            <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"></path><path d="M3.34 19a10 10 0 1 1 17.32 0"></path></svg>
+                    <div class="process-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="process-step">
+                        <div class="process-icon">
+                            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M30 50l15 15 25-30" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="50" cy="50" r="40" stroke-dasharray="4 4"/>
+                                <path d="M50 10v10M50 80v10M10 50h10M80 50h10" opacity="0.3"/>
+                            </svg>
                         </div>
-                        <div class="slab-info">
+                        <div class="process-info">
+                            <span class="step-label">STEP 5</span>
                             <h3>Handover</h3>
                             <p>Final detailing, delivery, and atmospheric completion.</p>
                         </div>
-                        <div class="slab-step">05</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="disciplines-refined white">
-            <div class="disciplines-container">
-                <div class="disciplines-left">
-                    <h2 class="sticky-title">Crafting the<br><span class="script">Unseen.</span></h2>
-                    <p class="sticky-para">Our services are designed to address the complex requirements of luxury estates and conceptual masterpieces.</p>
-                </div>
-                <div class="disciplines-right">
-                    <div class="discipline-item reveal">
-                        <span class="discipline-num">01</span>
-                        <div class="discipline-info">
-                            <h3>Interior Curation</h3>
-                            <p>Spatial curation for luxury residential and commercial estates globally. We focus on the dialogue between volume, texture, and light.</p>
-                        </div>
-                    </div>
-                    <div class="discipline-item reveal">
-                        <span class="discipline-num">02</span>
-                        <div class="discipline-info">
-                            <h3>Atmospheric Design</h3>
-                            <p>Curated interior environments that blend modern aesthetics with functional elegance and sensory richness.</p>
-                        </div>
-                    </div>
-                    <div class="discipline-item reveal">
-                        <span class="discipline-num">03</span>
-                        <div class="discipline-info">
-                            <h3>Project Curation</h3>
-                            <p>End-to-end design direction ensuring that the most complex interior concepts are executed with surgical precision.</p>
-                        </div>
-                    </div>
-                    <div class="discipline-item reveal">
-                        <span class="discipline-num">04</span>
-                        <div class="discipline-info">
-                            <h3>Aesthetic Curation</h3>
-                            <p>Material selection, artistic direction, and bespoke curation to bring a cohesive vision to your environment.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <section style="padding: 150px 10%; text-align: center;">
             <div class="reveal">

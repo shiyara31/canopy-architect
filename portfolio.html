@@ -19,13 +19,17 @@
 
     <header>
         <a href="index.html" class="logo">Canopy</a>
-        <div class="header-right">
-            <a href="index.html" class="back-home-link"><span>&larr;</span> HOME</a>
-            <div class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+        <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
     </header>
 
@@ -33,9 +37,9 @@
         <div class="back-to-site" id="menuCloseBtn">BACK TO SITE</div>
         <ul class="menu-links">
             <li><a href="index.html" data-text="Home">Home</a></li>
-            <li><a href="about.html" data-text="About Us">About Us</a></li>
-            <li><a href="services.html" data-text="Service">Service</a></li>
             <li><a href="portfolio.html" data-text="Portfolio">Portfolio</a></li>
+            <li><a href="about.html" data-text="About Us">About Us</a></li>
+            <li><a href="services.html" data-text="Services">Services</a></li>
             <li><a href="contact.html" data-text="Contact">Contact</a></li>
         </ul>
         <div class="menu-footer">
@@ -62,6 +66,7 @@
 
         <section class="portfolio bg-soft">
             <div class="projects-masonry">
+                <!-- Lounge -->
                 <div class="project-item reveal" data-project="lounge" data-grid="lounge-grid">
                     <div class="project-img-container">
                         <img src="assets/lounge/1.jpg" alt="The Curated Lounge">
@@ -70,6 +75,7 @@
                         <a href="javascript:void(0)" class="view-project" data-grid="lounge-grid">VIEW PROJECT &rarr;</a>
                     </div>
                 </div>
+                <!-- Gilded -->
                 <div class="project-item reveal" data-project="gilded" data-grid="gilded-grid">
                     <div class="project-img-container">
                         <img src="assets/gilded/double height.jpg" alt="The Gilded Refectory">
@@ -78,10 +84,51 @@
                         <a href="javascript:void(0)" class="view-project" data-grid="gilded-grid">VIEW PROJECT &rarr;</a>
                     </div>
                 </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 100px;">
-                <a href="javascript:void(0)" class="btn-outline" id="view-all-projects-btn">EXPLORE COLLECTIONS</a>
+                <!-- Mashood -->
+                <div class="project-item reveal" data-project="mashood" data-grid="mashood-grid">
+                    <div class="project-img-container">
+                        <img src="assets/estate/LIVING.png" alt="Estate Residence">
+                    </div>
+                    <div class="project-info">
+                        <a href="javascript:void(0)" class="view-project" data-grid="mashood-grid">VIEW PROJECT &rarr;</a>
+                    </div>
+                </div>
+                <!-- Nishad -->
+                <div class="project-item reveal" data-project="nishad" data-grid="nishad-grid">
+                    <div class="project-img-container">
+                        <img src="assets/nishad/nishad.png" alt="Contemporary Minimal">
+                    </div>
+                    <div class="project-info">
+                        <a href="javascript:void(0)" class="view-project" data-grid="nishad-grid">VIEW PROJECT &rarr;</a>
+                    </div>
+                </div>
+                <!-- Noushad -->
+                <div class="project-item reveal" data-project="noushad" data-grid="noushad-grid">
+                    <div class="project-img-container">
+                        <img src="assets/noushad/2.jpg" alt="Modern Narrative">
+                    </div>
+                    <div class="project-info">
+                        <a href="javascript:void(0)" class="view-project" data-grid="noushad-grid">VIEW PROJECT &rarr;</a>
+                    </div>
+                </div>
+                <!-- Sameer -->
+                <div class="project-item reveal" data-project="sameer" data-grid="sameer-grid">
+                    <div class="project-img-container">
+                        <img src="assets/sameer/m1.jpg" alt="Luxe Dwell">
+                    </div>
+                    <div class="project-info">
+                        <a href="javascript:void(0)" class="view-project" data-grid="sameer-grid">VIEW PROJECT &rarr;</a>
+                    </div>
+                </div>
+                <!-- Tahir -->
+                <div class="project-item reveal" data-project="tahir" data-grid="tahir-grid">
+                    <div class="project-img-container">
+                        <img src="assets/tahir/2.jpg" alt="Minimalist Expression">
+                    </div>
+                    <div class="project-info">
+                        <a href="javascript:void(0)" class="view-project" data-grid="tahir-grid">VIEW PROJECT &rarr;</a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -92,32 +139,11 @@
 
     <!-- Gallery Overlay -->
     <div class="gallery-overlay" id="portfolioOverlay">
-        <div class="back-to-home" onclick="closeProjectGallery(document.getElementById('portfolioOverlay'))">BACK TO COLLECTIONS</div>
-        <div class="gallery-folders-wrap">
-            <div class="folder-box" onclick="showFolderContent(this, 'mashood-grid')">
-                <img src="assets/estate/LIVING.png" alt="Collection 01">
-                <span>Collection 01</span>
-            </div>
-            <div class="folder-box" onclick="showFolderContent(this, 'nishad-grid')">
-                <img src="assets/nishad/nishad.png" alt="Collection 02">
-                <span>Collection 02</span>
-            </div>
-            <div class="folder-box" onclick="showFolderContent(this, 'noushad-grid')">
-                <img src="assets/noushad/2.jpg" alt="Collection 03">
-                <span>Collection 03</span>
-            </div>
-            <div class="folder-box" onclick="showFolderContent(this, 'sameer-grid')">
-                <img src="assets/sameer/m1.jpg" alt="Collection 04">
-                <span>Collection 04</span>
-            </div>
-            <div class="folder-box" onclick="showFolderContent(this, 'tahir-grid')">
-                <img loading="lazy" src="assets/tahir/2.jpg" alt="Collection 05">
-                <span>Collection 05</span>
-            </div>
-        </div>
+        <div class="back-to-home" onclick="window.location.href='portfolio.html'"><span>&larr;</span> BACK</div>
+        <div class="gallery-folders-wrap" style="display:none;"></div>
 
         <div class="gallery-image-grid-wrap" id="lounge-grid">
-            <div class="back-to-folders" onclick="hideFolderContent(this)">Back to Collections</div>
+            <div class="back-to-folders" onclick="window.location.href='portfolio.html'"><span>&larr;</span> BACK</div>
             <div class="gallery-header">
                 <div class="gallery-title-wrap">
                     <div class="gallery-meta">
@@ -204,7 +230,7 @@
         </div>
 
         <div class="gallery-image-grid-wrap" id="gilded-grid">
-            <div class="back-to-folders" onclick="hideFolderContent(this)">Back to Collections</div>
+            <div class="back-to-folders" onclick="window.location.href='portfolio.html'"><span>&larr;</span> BACK</div>
             <div class="gallery-header">
                 <div class="gallery-title-wrap">
                     <div class="gallery-meta">
@@ -256,7 +282,7 @@
         </div>
 
         <div class="gallery-image-grid-wrap" id="mashood-grid">
-            <div class="back-to-folders" onclick="hideFolderContent(this)">Back to Collections</div>
+            <div class="back-to-folders" onclick="window.location.href='portfolio.html'"><span>&larr;</span> BACK</div>
             <div class="gallery-header">
                 <div class="gallery-title-wrap">
                     <div class="gallery-meta">
@@ -296,7 +322,7 @@
         </div>
 
         <div class="gallery-image-grid-wrap" id="nishad-grid">
-            <div class="back-to-folders" onclick="hideFolderContent(this)">Back to Collections</div>
+            <div class="back-to-folders" onclick="window.location.href='portfolio.html'"><span>&larr;</span> BACK</div>
             <div class="gallery-header">
                 <div class="gallery-title-wrap">
                     <div class="gallery-meta">
@@ -331,7 +357,7 @@
         </div>
 
         <div class="gallery-image-grid-wrap" id="noushad-grid">
-            <div class="back-to-folders" onclick="hideFolderContent(this)">Back to Collections</div>
+            <div class="back-to-folders" onclick="window.location.href='portfolio.html'"><span>&larr;</span> BACK</div>
             <div class="gallery-header">
                 <div class="gallery-title-wrap">
                     <div class="gallery-meta">
@@ -352,7 +378,7 @@
         </div>
 
         <div class="gallery-image-grid-wrap" id="sameer-grid">
-            <div class="back-to-folders" onclick="hideFolderContent(this)">Back to Collections</div>
+            <div class="back-to-folders" onclick="window.location.href='portfolio.html'"><span>&larr;</span> BACK</div>
             <div class="gallery-header">
                 <div class="gallery-title-wrap">
                     <div class="gallery-meta">
