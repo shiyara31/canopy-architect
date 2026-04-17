@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Lenis
     const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        duration: 1.5, // Slower, more graceful glide
+        easing: (t) => 1 - Math.pow(1 - t, 4), // Quartic Out easing for sophisticated braking
         smoothWheel: true,
-        smoothTouch: true, /* Enable smooth touch for mobile */
-        touchMultiplier: 1.5
+        smoothTouch: true,
+        touchMultiplier: 2, // More responsive on touch
+        infinite: false,
     });
 
     function raf(time) {
@@ -16,28 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(raf);
     window.lenis = lenis;
 
-    // Loader
-    const loader = document.getElementById('loader');
-    const hasLoaded = sessionStorage.getItem('hasLoaded');
+    // Scroll Progress Bar Logic
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress-bar';
+    document.body.appendChild(progressBar);
 
-    const isContactPage = window.location.pathname.includes('contact.html');
+    lenis.on('scroll', (e) => {
+        const scrollPercent = (e.scroll / (e.limit)) * 100;
+        progressBar.style.transform = `scaleX(${scrollPercent / 100})`;
+    });
 
-    if (loader && !hasLoaded && !isContactPage) {
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                    document.body.classList.add('page-loaded');
-                    sessionStorage.setItem('hasLoaded', 'true');
-                }, 600);
-            }, 1000);
-        });
-    } else {
-        // Instant show for contact page or if already loaded
-        if (loader) loader.style.display = 'none';
-        document.body.classList.add('page-loaded');
-    }
+    // Page Reveal (Immediate)
+    document.body.classList.add('page-loaded');
+
 
     // Text Cascade (Word-by-word reveal)
     const cascadeElements = document.querySelectorAll('.cascade-text');
