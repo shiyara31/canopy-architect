@@ -203,16 +203,30 @@
 
 @media (max-width: 768px) {
     .section-padding {
-        padding: 80px 7%;
+        padding: 60px 5%;
     }
     .hero-title {
-        font-size: 3rem;
+        font-size: 2rem;
+        line-height: 1.4;
+        margin-bottom: 20px;
     }
     .section-title {
-        font-size: 2.5rem;
+        font-size: 1.6rem;
+        line-height: 1.3;
+        margin-bottom: 20px;
+    }
+    .hero-subtitle {
+        font-size: 0.95rem;
+        line-height: 1.6;
     }
     .form-row {
         grid-template-columns: 1fr;
         gap: 0;
+    }
+    .inquiry-form .form-group {
+        margin-bottom: 25px;
+    }
+    .visual-wrap {
+        height: 300px;
     }
 }
