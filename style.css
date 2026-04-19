@@ -644,7 +644,7 @@ header.header-over-dark:not(.scrolled) .desktop-nav a {
 }
 
 .back-to-site::before {
-    content: '←';
+    content: 'â†';
     font-size: 1rem;
 }
 
@@ -1721,16 +1721,19 @@ footer {
 }
 
 .gallery-item::after {
-    content: '🔍';
+    content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.5);
-    font-size: 2rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30px;
     opacity: 0;
     transition: all 0.4s ease;
     z-index: 2;
-    background: rgba(0,0,0,0.3);
+    background-color: rgba(0,0,0,0.5);
     width: 60px;
     height: 60px;
     display: flex;
@@ -2286,4 +2289,103 @@ body.gallery-active .gallery-image-grid-wrap.active {
     position: relative !important;
     height: auto !important;
     overflow: visible !important;
+}
+
+
+/* Instagram Profile Selector */.instagram-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.insta-dropdown {
+    position: absolute;
+    bottom: calc(100% + 15px);
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 10px;
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.instagram-wrapper:hover .insta-dropdown,
+.instagram-wrapper.active .insta-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.insta-dropdown a {
+    color: #fff !important;
+    text-decoration: none !important;
+    padding: 12px 18px !important;
+    font-size: 0.7rem !important;
+    line-height: 1 !important;
+    letter-spacing: 1px !important;
+    text-transform: uppercase !important;
+    text-align: left !important;
+    border-radius: 8px !important;
+    transition: all 0.3s ease !important;
+    display: block !important;
+    opacity: 1 !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+}
+
+.insta-dropdown a:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--accent-color) !important;
+}
+
+.insta-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid rgba(10, 10, 10, 0.95);
+}
+
+header .insta-dropdown, 
+.menu-overlay .insta-dropdown {
+    bottom: auto;
+    top: calc(100% + 15px);
+}
+
+header .insta-dropdown::after,
+.menu-overlay .insta-dropdown::after {
+    top: auto;
+    bottom: 100%;
+    border-top: none;
+    border-bottom: 8px solid rgba(10, 10, 10, 0.95);
+}
+
+@media (max-width: 768px) {
+    .insta-dropdown {
+        min-width: 180px;
+        left: auto;
+        right: -20px;
+        transform: translateY(10px);
+    }
+    .insta-dropdown::after {
+        left: auto;
+        right: 25px;
+        transform: none;
+    }
+    .instagram-wrapper:hover .insta-dropdown,
+    .instagram-wrapper.active .insta-dropdown {
+        transform: translateY(0);
+    }
 }

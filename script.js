@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     // Initialize Lenis
     const lenis = new Lenis({
         duration: 1.5, // Slower, more graceful glide
@@ -413,4 +413,24 @@ document.addEventListener('DOMContentLoaded', () => {
             header.classList.remove('scrolled');
         }
     });
+
+
+    // Instagram Dropdown Toggle for Mobile
+    document.querySelectorAll('.instagram-wrapper').forEach(wrapper => {
+        wrapper.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                this.classList.toggle('active');
+                if (e.target.closest('a') && !e.target.closest('.insta-dropdown')) {
+                    e.preventDefault();
+                }
+            }
+        });
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.instagram-wrapper')) {
+            document.querySelectorAll('.instagram-wrapper').forEach(w => w.classList.remove('active'));
+        }
+    });
+
 });
