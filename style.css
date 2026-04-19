@@ -2298,7 +2298,8 @@ body.gallery-active .gallery-image-grid-wrap.active {
 }
 
 
-/* Instagram Profile Selector */.instagram-wrapper {
+/* Instagram Profile Selector */
+.instagram-wrapper {
     position: relative;
     display: inline-block;
 }
@@ -2412,3 +2413,37 @@ header .insta-dropdown::after,
         padding-top: 20px !important;
     }
 }
+
+/* Footer Visibility Fix */
+.footer-refined {
+    background-color: #000 !important;
+}
+
+.footer-refined p {
+    color: rgba(255, 255, 255, 0.8) !important;
+    opacity: 1 !important;
+}
+
+.social-links a {
+    color: var(--accent-color) !important;
+    opacity: 1 !important;
+}
+
+.social-links a:hover {
+    color: #fff !important;
+}
+
+.insta-dropdown {
+    background: rgba(20, 20, 20, 0.98) !important;
+    border: 1px solid var(--accent-color) !important;
+}
+
+.insta-dropdown a {
+    color: var(--accent-color) !important;
+}
+
+.insta-dropdown a:hover {
+    color: #fff !important;
+    background: rgba(193, 163, 124, 0.15) !important;
+}
+
