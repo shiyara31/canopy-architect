@@ -601,7 +601,7 @@ header.header-over-dark:not(.scrolled) .desktop-nav a {
     flex-direction: column;
     justify-content: flex-start; /* Start from top on mobile */
     align-items: center;
-    padding: 100px 30px 50px;
+    padding: 100px 30px 40px;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
@@ -644,8 +644,8 @@ header.header-over-dark:not(.scrolled) .desktop-nav a {
 }
 
 .back-to-site::before {
-    content: 'â†';
-    font-size: 1rem;
+    content: '\2190';
+    font-size: 1.1rem;
 }
 
 .menu-links {
@@ -655,12 +655,12 @@ header.header-over-dark:not(.scrolled) .desktop-nav a {
 }
 
 .menu-links li {
-    margin-bottom: 20px; /* Tighter spacing */
+    margin-bottom: 15px; /* Tighter spacing for mobile fit */
     overflow: hidden;
 }
 
 .menu-links a {
-    font-size: 2.2rem; /* Optimized for mobile */
+    font-size: 1.8rem; /* Scaled down for mobile fit */
     text-decoration: none;
     color: var(--text-color);
     font-weight: 300;
@@ -688,7 +688,7 @@ header.header-over-dark:not(.scrolled) .desktop-nav a {
 
 .menu-footer {
     margin-top: auto; /* Push to bottom of scroll */
-    padding-top: 50px;
+    padding-top: 30px;
     padding-bottom: 20px;
     width: 100%;
     display: flex;
@@ -758,13 +758,13 @@ header.header-over-dark:not(.scrolled) .desktop-nav a {
 
 @media (max-width: 1024px) {
     .page-back-link {
-        top: 100px;
-        left: 30px;
+        top: 40px;
+        left: 20px;
         font-size: 0.65rem;
-        background: rgba(0,0,0,0.5);
-        padding: 5px 15px;
-        border-radius: 20px;
-        backdrop-filter: blur(5px);
+        background: none;
+        padding: 0;
+        border-radius: 0;
+        backdrop-filter: none;
     }
 }
 
@@ -788,6 +788,9 @@ header.header-over-dark:not(.scrolled) .desktop-nav a {
     height: 100%;
     z-index: 0;
     overflow: hidden;
+    background-image: url('./assets/hero.png');
+    background-size: cover;
+    background-position: center;
 }
 
 .hero.dark {
@@ -2387,5 +2390,22 @@ header .insta-dropdown::after,
     .instagram-wrapper:hover .insta-dropdown,
     .instagram-wrapper.active .insta-dropdown {
         transform: translateY(0);
+    }
+}
+
+/* Mobile Menu Height Fix */
+@media (max-width: 480px) {
+    .menu-overlay {
+        padding-top: 60px !important;
+        padding-bottom: 20px !important;
+    }
+    .menu-links a {
+        font-size: 1.6rem !important;
+    }
+    .menu-links li {
+        margin-bottom: 10px !important;
+    }
+    .menu-footer {
+        padding-top: 20px !important;
     }
 }

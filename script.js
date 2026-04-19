@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     // Initialize Lenis
     const lenis = new Lenis({
         duration: 1.5, // Slower, more graceful glide
@@ -111,18 +111,38 @@
         }
     });
 
-    // Force Video Play - Critical for background videos
+    // Hero Video Optimization
     const bgVideo = document.querySelector('.hero-bg video');
     if (bgVideo) {
-        bgVideo.play().catch(error => {
-            console.log("Autoplay was prevented:", error);
-            // On user interaction, try to play
-            const playOnGesture = () => {
-                bgVideo.play();
-                document.removeEventListener('click', playOnGesture);
-            };
-            document.addEventListener('click', playOnGesture);
+        // Add class for fade-in effect
+        bgVideo.style.opacity = '0';
+        bgVideo.style.transition = 'opacity 1.5s ease';
+
+        bgVideo.addEventListener('loadeddata', () => {
+            bgVideo.style.opacity = '1';
         });
+
+        // Fallback: If already loaded
+        if (bgVideo.readyState >= 3) {
+            bgVideo.style.opacity = '1';
+        }
+
+        // Force play logic (enhanced)
+        const attemptPlay = () => {
+            bgVideo.play().catch(() => {
+                // If autoplay fails, wait for interaction
+                const playOnGesture = () => {
+                    bgVideo.play();
+                    bgVideo.style.opacity = '1';
+                    document.removeEventListener('click', playOnGesture);
+                    document.removeEventListener('touchstart', playOnGesture);
+                };
+                document.addEventListener('click', playOnGesture);
+                document.addEventListener('touchstart', playOnGesture);
+            });
+        };
+
+        attemptPlay();
     }
 
     // Gallery Logic - General Functions
