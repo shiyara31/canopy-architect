@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Lenis
     const lenis = new Lenis({
-        duration: 1.5, // Slower, more graceful glide
-        easing: (t) => 1 - Math.pow(1 - t, 4), // Quartic Out easing for sophisticated braking
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
         smoothWheel: true,
         smoothTouch: true,
-        touchMultiplier: 2, // More responsive on touch
-        infinite: false,
+        touchMultiplier: 1.5,
+        lerp: 0.1, // Added linear interpolation for extra smoothness
     });
 
     function raf(time) {
@@ -21,11 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const progressBar = document.createElement('div');
     progressBar.className = 'scroll-progress-bar';
     document.body.appendChild(progressBar);
-
-    lenis.on('scroll', (e) => {
-        const scrollPercent = (e.scroll / (e.limit)) * 100;
-        progressBar.style.transform = `scaleX(${scrollPercent / 100})`;
-    });
 
     // Page Reveal (Immediate)
     document.body.classList.add('page-loaded');
@@ -102,38 +97,28 @@ document.addEventListener('DOMContentLoaded', () => {
         reveals.forEach(el => revealObserver.observe(el));
     }
 
-    // Parallax
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
+    // Parallax & Progress Bar Integration
+    lenis.on('scroll', (e) => {
+        // Progress Bar
+        const scrollPercent = (e.scroll / e.limit) * 100;
+        progressBar.style.transform = `scaleX(${scrollPercent / 100})`;
+
+        // Hero Parallax
         const heroBg = document.querySelector('.hero-bg img, .hero-bg video');
         if (heroBg) {
-            heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
+            heroBg.style.transform = `translateY(${e.scroll * 0.3}px)`;
         }
     });
 
     // Hero Video Optimization
     const bgVideo = document.querySelector('.hero-bg video');
     if (bgVideo) {
-        // Add class for fade-in effect
-        bgVideo.style.opacity = '0';
-        bgVideo.style.transition = 'opacity 1.5s ease';
-
-        bgVideo.addEventListener('loadeddata', () => {
-            bgVideo.style.opacity = '1';
-        });
-
-        // Fallback: If already loaded
-        if (bgVideo.readyState >= 3) {
-            bgVideo.style.opacity = '1';
-        }
-
         // Force play logic (enhanced)
         const attemptPlay = () => {
             bgVideo.play().catch(() => {
                 // If autoplay fails, wait for interaction
                 const playOnGesture = () => {
                     bgVideo.play();
-                    bgVideo.style.opacity = '1';
                     document.removeEventListener('click', playOnGesture);
                     document.removeEventListener('touchstart', playOnGesture);
                 };

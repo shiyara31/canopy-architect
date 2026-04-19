@@ -34,6 +34,10 @@
     --divider: #E5E7EB;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* Lenis Smooth Scroll Core */
 html.lenis {
   height: auto;
@@ -603,6 +607,7 @@ header.header-over-dark:not(.scrolled) .desktop-nav a {
     align-items: center;
     padding: 100px 30px 40px;
     overflow-y: auto;
+    scroll-behavior: smooth;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     transform: translateY(-100%); /* Slide down/up instead of sideways */
@@ -788,9 +793,6 @@ header.header-over-dark:not(.scrolled) .desktop-nav a {
     height: 100%;
     z-index: 0;
     overflow: hidden;
-    background-image: url('./assets/hero.png');
-    background-size: cover;
-    background-position: center;
 }
 
 .hero.dark {
@@ -2022,6 +2024,7 @@ footer {
     background: var(--bg-color);
     z-index: 3010;
     overflow-y: auto;
+    scroll-behavior: smooth;
     padding: 120px 5% 50px;
     opacity: 0;
     visibility: hidden;

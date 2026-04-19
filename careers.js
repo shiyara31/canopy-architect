@@ -44,7 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Parallax effect for application image
-    window.addEventListener('scroll', () => {
+    // Parallax effect for application image
+    const updateParallax = () => {
         const parallaxImg = document.querySelector('.parallax-img');
         if (parallaxImg) {
             const rect = parallaxImg.getBoundingClientRect();
@@ -53,7 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 parallaxImg.style.transform = `scale(1.1) translateY(${-move}px)`;
             }
         }
-    });
+    }
+
+    if (window.lenis) {
+        window.lenis.on('scroll', updateParallax);
+    } else {
+        window.addEventListener('scroll', updateParallax);
+    }
 
     // Reveal animations integration (if not handled globally)
     const observerOptions = {
