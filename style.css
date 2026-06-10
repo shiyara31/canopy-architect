@@ -1238,12 +1238,25 @@ header.header-over-dark:not(.scrolled) .desktop-nav a {
     font-weight: 300;
 }
 
-/* 3 Column Grid Desktop / 2 Column Mobile */
+/* 12-Column Balanced Grid Desktop / 2-Column Mobile */
 .projects-masonry {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(12, 1fr);
     grid-gap: 30px;
     padding: 0 5%;
+}
+
+.projects-masonry .project-item:nth-child(1),
+.projects-masonry .project-item:nth-child(2),
+.projects-masonry .project-item:nth-child(3) {
+    grid-column: span 4;
+}
+
+.projects-masonry .project-item:nth-child(4),
+.projects-masonry .project-item:nth-child(5),
+.projects-masonry .project-item:nth-child(6),
+.projects-masonry .project-item:nth-child(7) {
+    grid-column: span 3;
 }
 
 .project-item {
@@ -1319,6 +1332,9 @@ header.header-over-dark:not(.scrolled) .desktop-nav a {
     .projects-masonry {
         grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile/tablet */
         grid-gap: 20px;
+    }
+    .projects-masonry .project-item {
+        grid-column: auto !important;
     }
     
     .portfolio-title {
@@ -2181,8 +2197,8 @@ footer {
     .portfolio { padding: 100px 7% 60px !important; }
     .portfolio-title { font-size: 3rem; }
     .portfolio-title .script { font-size: 3.8rem; display: block; margin-left: 0; }
-    .projects-masonry { grid-template-columns: 1fr; gap: 40px; }
-    .project-img-container { height: 400px; }
+    .projects-masonry { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .project-img-container { height: auto; aspect-ratio: 1 / 1; }
     .project-info { opacity: 1; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.1) 70%); padding: 30px; }
     .project-info h4 { font-size: 2rem; }
 
@@ -2272,7 +2288,7 @@ footer {
     .hero h1 span.script { font-size: 3.5rem; }
     .vision-title-center { font-size: 2.4rem; }
     .portfolio-title { font-size: 2.8rem; }
-    .project-img-container { height: 300px; }
+    .project-img-container { height: auto; aspect-ratio: 1 / 1; }
     .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 5px; }
 }
 
