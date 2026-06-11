@@ -1309,6 +1309,7 @@ header.header-over-dark:not(.scrolled) .desktop-nav a {
 
 .view-project {
     display: inline-block !important;
+    white-space: nowrap;
     padding: 8px 16px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: #fff;
@@ -1355,10 +1356,8 @@ header.header-over-dark:not(.scrolled) .desktop-nav a {
         font-size: 0.8rem;
     }
 }
-    .project-info h4 {
-        font-size: 1.8rem;
-    }
-}
+
+.btn-outline {
     padding: 25px 50px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     color: var(--text-color);
@@ -1726,6 +1725,11 @@ header.header-over-dark:not(.scrolled) .desktop-nav a {
     }
     .contact-detail-value {
         font-size: 1.05rem !important;
+    }
+    .view-project {
+        font-size: 0.55rem !important;
+        letter-spacing: 2px !important;
+        padding: 6px 12px !important;
     }
 }
 
@@ -2704,4 +2708,232 @@ header .insta-dropdown::after,
     color: #fff !important;
     background: rgba(193, 163, 124, 0.15) !important;
 }
+
+/* ==========================================
+   OUR TEAM PAGE STYLING (Premium & Custom)
+   ========================================== */
+
+/* General Team Layouts Container */
+.team-section {
+    padding: 140px 7% 100px !important;
+}
+
+.team-section.bg-soft {
+    background-color: var(--bg-soft);
+}
+
+.team-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.team-section-title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 300;
+    line-height: 1.1;
+    margin-top: 15px;
+    margin-bottom: 60px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+/* Founders & Owners - 3 Premium Boxes Grid */
+.founders-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.founder-card {
+    background-color: var(--bg-color);
+    border: 1px solid var(--divider);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: var(--shadow-soft);
+}
+
+.founder-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--accent-color);
+}
+
+.founder-card .team-img-container {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.founder-card .team-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.founder-card:hover .team-img-container img {
+    transform: scale(1.05);
+}
+
+.founder-card .team-info {
+    padding: 35px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.founder-card .team-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.founder-card .team-info .team-role {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.founder-card .team-info .team-bio {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-top: 12px;
+}
+
+/* Staff - 4 Round Type Cards Grid */
+.staff-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 100px 30px; /* Expanded vertical gap to accommodate overlapping circular portraits */
+    margin-top: 120px;
+    padding-top: 20px;
+}
+
+.staff-card {
+    position: relative;
+    border-radius: var(--radius-lg);
+    padding: 100px 24px 35px; /* Large top padding to offset the absolute circular image */
+    text-align: center;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    color: #FFFFFF !important; /* Forces white text on colored backgrounds */
+}
+
+.staff-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Curated, muted colors for staff backgrounds from layout screenshot */
+.staff-color-1 { background-color: #5e6d75; }
+.staff-color-2 { background-color: #8faaa0; }
+.staff-color-3 { background-color: #bcae97; }
+.staff-color-4 { background-color: #7a7d80; }
+
+.staff-card .team-img-container {
+    position: absolute;
+    top: -70px; /* Offset circle by half its height */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid var(--bg-soft); /* Colored border matching background section */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    background-color: #f7f7f7;
+    transition: var(--transition);
+}
+
+.staff-card:hover .team-img-container {
+    transform: translateX(-50%) scale(1.05);
+    border-color: #FFFFFF;
+}
+
+.staff-card .team-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.staff-card .team-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.staff-card .team-info h3 {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #FFFFFF !important;
+    margin: 0;
+}
+
+.staff-card .team-info .team-role {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.75) !important;
+    font-weight: 500;
+}
+
+/* Responsive Overrides for Team Layouts */
+@media (max-width: 1024px) {
+    .founders-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    .staff-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 110px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .founders-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .staff-grid {
+        grid-template-columns: 1fr;
+        gap: 110px 20px;
+        margin-top: 100px;
+    }
+    
+    .team-section-title {
+        font-size: 2.6rem;
+        margin-bottom: 40px;
+    }
+    
+    .team-section {
+        padding: 100px 7% 60px !important;
+    }
+}
+
 
