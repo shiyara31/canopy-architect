@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Lenis
+    // Initialize Lenis with duration-based exponential easing
+    // smoothTouch is set to false to respect the native, hardware-accelerated momentum scroll on mobile
     const lenis = new Lenis({
-        duration: 1.2,
+        duration: 1.4,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
         smoothWheel: true,
-        smoothTouch: true,
-        touchMultiplier: 1.5,
-        lerp: 0.1, // Added linear interpolation for extra smoothness
+        smoothTouch: false,
+        wheelMultiplier: 1.0,
     });
 
     function raf(time) {
@@ -99,8 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Parallax & Progress Bar Integration
     lenis.on('scroll', (e) => {
-        // Progress Bar
-        const scrollPercent = (e.scroll / e.limit) * 100;
+        // Progress Bar (safe check for limit to avoid NaN or Infinity)
+        const scrollPercent = e.limit > 0 ? (e.scroll / e.limit) * 100 : 0;
         progressBar.style.transform = `scaleX(${scrollPercent / 100})`;
 
         // Hero Parallax
@@ -141,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             overlay.style.display = "flex";
             if(window.lenis) {
+                window.lenis.resize(); // Recalculate dimensions for the new active layout
                 window.lenis.scrollTo(0, {immediate: true});
             } else {
                 window.scrollTo(0, 0);
@@ -168,6 +169,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     grids.forEach(g => g.classList.remove('active'));
                     overlay.classList.remove('folder-opened');
                 }
+                
+                // Resize lenis again after gallery transitions/animations are complete
+                setTimeout(() => { if (window.lenis) window.lenis.resize(); }, 150);
             });
         }
     };
@@ -183,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
             gridWrap.classList.add('active');
             overlay.classList.add('folder-opened');
             if(window.lenis) {
+                window.lenis.resize(); // Recalculate size since contents changed
                 window.lenis.scrollTo(0, {immediate: true});
             } else {
                 window.scrollTo(0, 0);
@@ -199,6 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.classList.remove('folder-opened');
         if (folders) folders.style.display = 'grid';
         if(window.lenis) {
+            window.lenis.resize(); // Recalculate size since contents changed
             window.lenis.scrollTo(0, {immediate: true});
         } else {
             window.scrollTo(0, 0);
@@ -212,6 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 overlay.style.display = "none";
                 document.body.classList.remove('gallery-active');
                 if (window.lenis) {
+                    window.lenis.resize(); // Recalculate bounds for regular page
                     window.lenis.scrollTo(savedScrollPos, {immediate: true});
                 } else {
                     window.scrollTo(0, savedScrollPos);
@@ -223,6 +230,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (folders) folders.style.display = 'grid';
                 grids.forEach(g => g.classList.remove('active'));
                 overlay.classList.remove('folder-opened');
+                
+                // Resize once more after transitions are fully done
+                setTimeout(() => { if (window.lenis) window.lenis.resize(); }, 150);
             }, 800);
         }
     };
@@ -467,6 +477,22 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', function(e) {
         if (!e.target.closest('.instagram-wrapper')) {
             document.querySelectorAll('.instagram-wrapper').forEach(w => w.classList.remove('active'));
+        }
+    });
+
+    // Resize Lenis on window resize
+    window.addEventListener('resize', () => {
+        if (window.lenis) window.lenis.resize();
+    });
+
+    // Resize Lenis when images load to prevent scroll bounding issues
+    document.querySelectorAll('img').forEach(img => {
+        if (img.complete) {
+            if (window.lenis) window.lenis.resize();
+        } else {
+            img.addEventListener('load', () => {
+                if (window.lenis) window.lenis.resize();
+            });
         }
     });
 
