@@ -1295,10 +1295,10 @@ header.header-over-dark:not(.scrolled) .desktop-nav a {
     position: static; /* Remove absolute positioning */
     background: transparent;
     padding: 0;
-    text-align: left;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 12px;
     opacity: 1 !important; /* Ensure always visible */
 }
