@@ -411,13 +411,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // Navbar Scroll Background
     const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            const targetEl = document.querySelector(targetId);
+            if (targetEl && window.lenis) {
+                e.preventDefault();
+                window.lenis.scrollTo(targetEl, {
+                    duration: 1.2,
+                    offset: -80, // Offset for fixed header
+                });
+            }
+        });
     });
+
+    // Smooth scroll to hash on page load
+    if (window.location.hash) {
+        const targetEl = document.querySelector(window.location.hash);
+        if (targetEl && window.lenis) {
+            window.lenis.scrollTo(0, { immediate: true });
+            setTimeout(() => {
+                window.lenis.scrollTo(targetEl, {
+                    duration: 1.5,
+                    offset: -80,
+                });
+            }, 100);
+        }
+    }
 
 
     // Instagram Dropdown Toggle for Mobile

@@ -3,29 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Careers | Canopy Interiors - Join Our Global Design Studio</title>
-    <meta name="description" content="Join Canopy Interiors. Explore career opportunities and internships in luxury interior design and architecture across Dubai and Kerala.">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="careers.css">
+    <title>Our Team | Canopy Interiors</title>
+    <link rel="stylesheet" href="style.css?v=1.1">
     <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 </head>
-<body class="light-theme">
+<body>
 
-    <div class="scroll-progress-bar"></div>
-
-    <!-- Navigation -->
-    <header class="scrolled">
+    <header>
         <a href="index.html" class="logo">Canopy</a>
         <nav class="desktop-nav">
             <a href="index.html">Home</a>
             <a href="portfolio.html">Portfolio</a>
             <a href="about.html">About Us</a>
-            <a href="team.html">Our Team</a>
+            <a href="team.html" class="active">Our Team</a>
             <a href="services.html">Services</a>
-            <a href="careers.html" class="active">Careers</a>
+            <a href="careers.html">Careers</a>
             <a href="contact.html">Contact Us</a>
         </nav>
-        <div class="header-locations">GLOBAL CONSULTANCY | DUBAI &bull; KERALA</div>
         <div class="menu-toggle" id="menuToggle">
             <span></span>
             <span></span>
@@ -33,7 +27,6 @@
         </div>
     </header>
 
-    <!-- Overlay Menu -->
     <div class="menu-overlay" id="menuOverlay">
         <div class="back-to-site" id="menuCloseBtn">BACK</div>
         <ul class="menu-links">
@@ -49,75 +42,89 @@
 
     <main>
         <a href="index.html" class="page-back-link reveal"><span>&larr;</span></a>
-        <!-- Careers Hero Section -->
-        <section class="careers-hero section-padding">
-            <div class="container container-narrow">
-                <span class="section-tag center reveal">WE ARE HIRING</span>
-                <h1 class="hero-title reveal">
-                    <span class="masked-wrap"><span class="masked-reveal">Join Our</span></span>
-                    <span class="masked-wrap"><span class="masked-reveal script">Team.</span></span>
-                </h1>
-                <p class="hero-subtitle reveal cascade-text">Build your future with us — explore careers and internships.</p>
+        
+        <!-- Founders Section -->
+        <section class="team-section white reveal">
+            <div class="team-container">
+                <span class="section-tag center">FOUNDERS & OWNERS</span>
+                <h1 class="team-section-title">The Leadership</h1>
+                
+                <div class="founders-grid">
+                    <!-- Founder 1 -->
+                    <div class="team-card founder-card">
+                        <div class="team-img-container">
+                            <img src="assets/vision_1.png" alt="Principal Architect & Managing Partner">
+                        </div>
+                        <div class="team-info">
+                            <h3>Principal Architect</h3>
+                            <span class="team-role">Managing Partner</span>
+                            <p class="team-bio">Guiding the spatial vision of Canopy with a deep commitment to architectural poetics, merging structural integrity with emotional resonance.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Founder 2 -->
+                    <div class="team-card founder-card">
+                        <div class="team-img-container">
+                            <img src="assets/vision_2.png" alt="Design Director & Co-Founder">
+                        </div>
+                        <div class="team-info">
+                            <h3>Design Director</h3>
+                            <span class="team-role">Co-Founder</span>
+                            <p class="team-bio">Orchestrating aesthetic direction, color theory, and material curation to formulate bespoke interior narratives globally.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Application Section -->
-        <section class="application-section section-padding bg-soft">
-            <div class="container">
-                <div class="application-split reveal">
-                    <div class="application-form-area">
-                        <span class="section-tag reveal">JOIN THE STUDIO</span>
-                        <h2 class="section-title reveal">Apply for a <span class="script">Position.</span></h2>
-                        <p class="section-description reveal" style="max-width: 100%; margin-bottom: 40px; text-align: left;">We are always looking for visionary talent to join our global team. Select your discipline below and share your narrative with us.</p>
-                        
-                        <form id="careersForm" class="inquiry-form inline-form reveal">
-                            <div class="form-group">
-                                <label>DISCIPLINE / POSITION</label>
-                                <select id="career_position" required>
-                                    <option value="" disabled selected>Select a position</option>
-                                    <option value="Senior Interior Designer">Senior Interior Designer</option>
-                                    <option value="3D Visualizer">3D Visualizer</option>
-                                    <option value="Interior Architect">Interior Architect</option>
-                                    <option value="Junior Design Analyst">Junior Design Analyst</option>
-                                    <option value="Internship (General)">Internship (General)</option>
-                                </select>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>FULL NAME</label>
-                                    <input type="text" id="career_name" placeholder="Johnathan Doe" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>EMAIL ADDRESS</label>
-                                    <input type="email" id="career_email" placeholder="john@example.com" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>PHONE NUMBER</label>
-                                    <input type="tel" id="career_phone" placeholder="+971 -- --- ----" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>PORTFOLIO LINK</label>
-                                    <input type="url" id="career_portfolio" placeholder="Behance / Google Drive link" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>TELL US ABOUT YOURSELF</label>
-                                <textarea id="career_message" placeholder="Why do you want to join Canopy?"></textarea>
-                            </div>
-                            
-                            <button type="submit" class="btn primary" style="width: 100%;" id="submitBtn">
-                                <span class="btn-text">SUBMIT APPLICATION</span>
-                                <div class="btn-loader"></div>
-                            </button>
-                        </form>
+        <!-- Staff Section -->
+        <section class="team-section bg-soft reveal">
+            <div class="team-container">
+                <span class="section-tag center">OUR COLLECTIVE VOICE</span>
+                <h2 class="team-section-title">The Design & Technical Team</h2>
+                
+                <div class="staff-grid">
+                    <!-- Staff 1 -->
+                    <div class="team-card staff-card">
+                        <div class="team-img-container">
+                            <img src="assets/phil_1.png" alt="Senior Interior Designer">
+                        </div>
+                        <div class="team-info">
+                            <h3>Senior Interior Designer</h3>
+                            <span class="team-role">Creative Curation</span>
+                        </div>
                     </div>
 
-                    <div class="application-visual reveal">
-                        <div class="visual-wrap">
-                            <img src="assets/about_intro_render.png" alt="Canopy Studio Life" class="parallax-img">
-                            <div class="visual-overlay"></div>
+                    <!-- Staff 2 -->
+                    <div class="team-card staff-card">
+                        <div class="team-img-container">
+                            <img src="assets/project1.png" alt="Lead 3D Visualizer">
+                        </div>
+                        <div class="team-info">
+                            <h3>Lead 3D Visualizer</h3>
+                            <span class="team-role">Digital Artistry</span>
+                        </div>
+                    </div>
+
+                    <!-- Staff 3 -->
+                    <div class="team-card staff-card">
+                        <div class="team-img-container">
+                            <img src="assets/project2.png" alt="Project Architect">
+                        </div>
+                        <div class="team-info">
+                            <h3>Project Architect</h3>
+                            <span class="team-role">Technical Execution</span>
+                        </div>
+                    </div>
+
+                    <!-- Staff 4 -->
+                    <div class="team-card staff-card">
+                        <div class="team-img-container">
+                            <img src="assets/project3.png" alt="Fit-Out Manager">
+                        </div>
+                        <div class="team-info">
+                            <h3>Fit-Out Manager</h3>
+                            <span class="team-role">Execution & Handover</span>
                         </div>
                     </div>
                 </div>
@@ -125,8 +132,8 @@
         </section>
 
         <!-- Footer -->
-        <footer class="footer-refined">
-            <div class="social-links reveal">
+        <footer class="footer-refined" style="padding: 100px 7% 50px; text-align: center; border-top: 1px solid var(--divider);">
+            <div class="social-links">
                 <div class="instagram-wrapper">
                     <a href="javascript:void(0)" aria-label="Instagram">
                         <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -141,11 +148,10 @@
             <div style="margin-top: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 0.7rem; opacity: 0.5; letter-spacing: 2px;">
                 <a href="https://www.instagram.com/intellex.web" target="_blank" style="color: var(--accent-color); text-decoration: none; display: flex; align-items: center; gap: 8px;">
                     <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    MEET THE DEVELOPER
-                </a>
-            </div>
-        </footer>
-    </main>
+                MEET THE DEVELOPER
+            </a>
+        </div>
+    </footer>
 
     <!-- WhatsApp Floating Button -->
     <a href="https://wa.me/971563451439" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
@@ -153,7 +159,5 @@
     </a>
 
     <script src="script.js"></script>
-    <script src="careers.js"></script>
 </body>
 </html>
-
