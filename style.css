@@ -35,7 +35,7 @@
 }
 
 html {
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
 }
 
 /* Lenis Smooth Scroll Core */
@@ -359,7 +359,7 @@ html.lenis {
 
 html {
     width: 100%;
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
     background-color: var(--bg-color);
     overflow-x: hidden;
 }
