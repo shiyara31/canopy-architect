@@ -503,4 +503,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Inquiry Form Submission Handler
+    const inquiryForms = document.querySelectorAll('.inquiry-form');
+    inquiryForms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form fields
+            const nameInput = form.querySelector('input[placeholder="Your Name"]');
+            const emailInput = form.querySelector('input[placeholder="name@email.com"]');
+            const serviceInput = form.querySelector('input[placeholder="Service Required"]');
+            const messageInput = form.querySelector('textarea[placeholder="Tell us about your project..."]');
+            const submitBtn = form.querySelector('button[type="submit"]');
+
+            const name = nameInput ? nameInput.value : '';
+            const email = emailInput ? emailInput.value : '';
+            const service = serviceInput ? serviceInput.value : '';
+            const message = messageInput ? messageInput.value : '';
+
+            // Construct Mailto link
+            const recipient = "ar.canopy@gmail.com";
+            const subject = encodeURIComponent(`Inquiry from ${name}`);
+            const bodyValue = `Inquiry Details:\n\nName: ${name}\nEmail: ${email}\nService Required: ${service}\n\nMessage:\n${message}`;
+            const body = encodeURIComponent(bodyValue);
+            
+            const mailtoLink = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+            window.location.href = mailtoLink;
+            form.reset();
+        });
+    });
+
 });

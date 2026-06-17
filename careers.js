@@ -21,25 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const message = document.getElementById('career_message').value;
 
             // Construct Mailto link
-            const recipient = "yourcompany@email.com";
+            const recipient = "ar.canopy@gmail.com";
             const subject = encodeURIComponent(`Career Application: ${position}`);
             const bodyValue = `Application Details:\n\nPosition: ${position}\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nPortfolio Link: ${portfolio}\n\nMessage:\n${message}`;
             const body = encodeURIComponent(bodyValue);
             
             const mailtoLink = `mailto:${recipient}?subject=${subject}&body=${body}`;
 
-            // Simulate slight delay for premium feel
-            setTimeout(() => {
-                window.location.href = mailtoLink;
-                
-                // Reset button
-                submitBtn.classList.remove('loading');
-                btnText.innerText = 'OPENING CLIENT...';
-                
-                setTimeout(() => {
-                    btnText.innerText = originalText;
-                }, 3000);
-            }, 1200);
+            window.location.href = mailtoLink;
+            form.reset();
         });
     }
 
