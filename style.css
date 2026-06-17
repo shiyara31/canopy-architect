@@ -27,6 +27,7 @@
     --font-sans: 'Outfit', sans-serif;
     --font-script: 'Baskervville', serif;
     --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     --radius-lg: 20px;
     --radius-md: 12px;
     --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.04);
@@ -408,7 +409,7 @@ body.page-exiting main {
 /* Specific Card Reveal with Scale & Image Parallax Move */
 .project-item.reveal {
     transform: translateY(100px) scale(0.96);
-    transition: all 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .project-item.reveal.active {
@@ -2018,7 +2019,7 @@ footer {
     background-position: center;
     background-size: 30px;
     opacity: 0;
-    transition: all 0.4s ease;
+    transition: opacity 0.4s ease, transform 0.4s ease;
     z-index: 2;
     background-color: rgba(0,0,0,0.5);
     width: 60px;
@@ -2027,7 +2028,6 @@ footer {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    backdrop-filter: blur(5px);
 }
 
 .gallery-item:hover img {
@@ -2037,6 +2037,7 @@ footer {
 .gallery-item:hover::after {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
+    backdrop-filter: blur(5px);
 }
 
 @media (max-width: 1024px) {

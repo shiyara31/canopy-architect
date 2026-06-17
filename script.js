@@ -480,19 +480,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Debounced Lenis resize to prevent layout thrashing and scroll lag
+    let resizeTimeout;
+    const debouncedLenisResize = () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            if (window.lenis) {
+                window.lenis.resize();
+            }
+        }, 100);
+    };
+
     // Resize Lenis on window resize
-    window.addEventListener('resize', () => {
-        if (window.lenis) window.lenis.resize();
-    });
+    window.addEventListener('resize', debouncedLenisResize);
 
     // Resize Lenis when images load to prevent scroll bounding issues
     document.querySelectorAll('img').forEach(img => {
         if (img.complete) {
-            if (window.lenis) window.lenis.resize();
+            debouncedLenisResize();
         } else {
-            img.addEventListener('load', () => {
-                if (window.lenis) window.lenis.resize();
-            });
+            img.addEventListener('load', debouncedLenisResize);
         }
     });
 
