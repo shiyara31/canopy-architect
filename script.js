@@ -506,6 +506,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inquiry Form Submission Handler
     const inquiryForms = document.querySelectorAll('.inquiry-form');
     inquiryForms.forEach(form => {
+        if (form.id === 'careersForm') return;
+
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             
@@ -521,16 +523,50 @@ document.addEventListener('DOMContentLoaded', () => {
             const service = serviceInput ? serviceInput.value : '';
             const message = messageInput ? messageInput.value : '';
 
-            // Construct Mailto link
-            const recipient = "ar.canopy@gmail.com";
-            const subject = encodeURIComponent(`Inquiry from ${name}`);
-            const bodyValue = `Inquiry Details:\n\nName: ${name}\nEmail: ${email}\nService Required: ${service}\n\nMessage:\n${message}`;
-            const body = encodeURIComponent(bodyValue);
-            
-            const mailtoLink = `mailto:${recipient}?subject=${subject}&body=${body}`;
+            let originalText = "Send Inquiry Now";
+            if (submitBtn) {
+                originalText = submitBtn.innerText;
+                submitBtn.innerText = 'SUBMITTING...';
+                submitBtn.disabled = true;
+            }
 
-            window.location.href = mailtoLink;
-            form.reset();
+            // Send via FormSubmit AJAX
+            fetch("https://formsubmit.co/ajax/ar.canopy@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    "_subject": `Inquiry from ${name}`,
+                    "Name": name,
+                    "Email": email,
+                    "Service Required": service,
+                    "Message": message
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (submitBtn) {
+                    submitBtn.innerText = 'SENT SUCCESSFULLY!';
+                    form.reset();
+                    setTimeout(() => {
+                        submitBtn.innerText = originalText;
+                        submitBtn.disabled = false;
+                    }, 3000);
+                } else {
+                    form.reset();
+                }
+            })
+            .catch(error => {
+                if (submitBtn) {
+                    submitBtn.innerText = 'FAILED. TRY AGAIN';
+                    submitBtn.disabled = false;
+                    setTimeout(() => {
+                        submitBtn.innerText = originalText;
+                    }, 3000);
+                }
+            });
         });
     });
 

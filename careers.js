@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.classList.add('loading');
             const btnText = submitBtn.querySelector('.btn-text');
             const originalText = btnText.innerText;
-            btnText.innerText = 'PREPARING...';
+            btnText.innerText = 'SUBMITTING...';
+            submitBtn.disabled = true;
 
             // Form Data
             const position = document.getElementById('career_position').value;
@@ -20,16 +21,41 @@ document.addEventListener('DOMContentLoaded', () => {
             const portfolio = document.getElementById('career_portfolio').value;
             const message = document.getElementById('career_message').value;
 
-            // Construct Mailto link
-            const recipient = "ar.canopy@gmail.com";
-            const subject = encodeURIComponent(`Career Application: ${position}`);
-            const bodyValue = `Application Details:\n\nPosition: ${position}\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nPortfolio Link: ${portfolio}\n\nMessage:\n${message}`;
-            const body = encodeURIComponent(bodyValue);
-            
-            const mailtoLink = `mailto:${recipient}?subject=${subject}&body=${body}`;
-
-            window.location.href = mailtoLink;
-            form.reset();
+            // Send via FormSubmit AJAX
+            fetch("https://formsubmit.co/ajax/ar.canopy@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    "_subject": `Career Application: ${position} - ${name}`,
+                    "Position": position,
+                    "Name": name,
+                    "Email": email,
+                    "Phone": phone,
+                    "Portfolio Link": portfolio,
+                    "Message": message
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                submitBtn.classList.remove('loading');
+                btnText.innerText = 'SENT SUCCESSFULLY!';
+                form.reset();
+                setTimeout(() => {
+                    btnText.innerText = originalText;
+                    submitBtn.disabled = false;
+                }, 3000);
+            })
+            .catch(error => {
+                submitBtn.classList.remove('loading');
+                btnText.innerText = 'FAILED. TRY AGAIN';
+                submitBtn.disabled = false;
+                setTimeout(() => {
+                    btnText.innerText = originalText;
+                }, 3000);
+            });
         });
     }
 
