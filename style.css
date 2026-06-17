@@ -760,7 +760,7 @@ header.header-over-dark:not(.scrolled) .desktop-nav a {
     position: fixed;
     top: 130px;
     left: 50px;
-    z-index: 1000;
+    z-index: 1005;
     font-family: var(--font-sans);
     font-size: 0.75rem;
     letter-spacing: 5px;
