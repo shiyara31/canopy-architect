@@ -15,6 +15,7 @@
 }
 
 :root {
+    color-scheme: light;
     --bg-color: #FFFFFF;
     --bg-soft: #F5F3EF;
     --text-color: #111827;
