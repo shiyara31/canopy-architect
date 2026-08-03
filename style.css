@@ -908,7 +908,9 @@ header.header-over-dark:not(.scrolled) .desktop-nav a {
 
 .hero-btns {
     display: flex;
-    gap: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .btn {
@@ -3032,6 +3034,180 @@ header .insta-dropdown::after,
 
 .footer-legal a:hover {
     color: var(--accent-color);
+}
+
+/* Schedule Call Modal Overlay & Cards */
+.schedule-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 20px;
+}
+
+.schedule-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.schedule-modal-card {
+    background: #141414;
+    border: 1px solid rgba(212, 185, 150, 0.3);
+    border-radius: 24px;
+    padding: 45px 35px 35px;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: center;
+    color: #ffffff;
+}
+
+.schedule-modal-overlay.active .schedule-modal-card {
+    transform: scale(1) translateY(0);
+}
+
+.schedule-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.schedule-modal-close:hover {
+    background: var(--accent-color);
+    color: #111111;
+    border-color: var(--accent-color);
+    transform: rotate(90deg);
+}
+
+.schedule-modal-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.schedule-modal-sub {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.schedule-options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.schedule-option-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: left;
+}
+
+.schedule-option-item:hover {
+    background: rgba(212, 185, 150, 0.12);
+    border-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.schedule-option-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.schedule-option-location {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.schedule-option-number {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+.schedule-option-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: var(--accent-color);
+    color: #111827;
+    border-radius: 10px;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.schedule-option-item:hover .schedule-option-btn {
+    background: #ffffff;
+    color: #000000;
+    transform: translateX(3px);
+}
+
+@media (max-width: 480px) {
+    .schedule-modal-card {
+        padding: 35px 20px 25px;
+    }
+    .schedule-option-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .schedule-option-btn {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 

@@ -570,4 +570,71 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Schedule Call Modal Logic
+    const initScheduleCallModal = () => {
+        let modalOverlay = document.getElementById('scheduleCallModal');
+        if (!modalOverlay) {
+            modalOverlay = document.createElement('div');
+            modalOverlay.id = 'scheduleCallModal';
+            modalOverlay.className = 'schedule-modal-overlay';
+            modalOverlay.innerHTML = `
+                <div class="schedule-modal-card">
+                    <button class="schedule-modal-close" aria-label="Close modal">&times;</button>
+                    <h3 class="schedule-modal-title">Schedule a Call</h3>
+                    <p class="schedule-modal-sub">Select your preferred studio location to connect directly with our design team.</p>
+                    <div class="schedule-options-grid">
+                        <a href="tel:+971563451439" class="schedule-option-item">
+                            <div class="schedule-option-info">
+                                <span class="schedule-option-location">Dubai Studio &bull; UAE</span>
+                                <span class="schedule-option-number">+971 563451439</span>
+                            </div>
+                            <div class="schedule-option-btn">
+                                <span>Call Dubai</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </div>
+                        </a>
+                        <a href="tel:+918089231332" class="schedule-option-item">
+                            <div class="schedule-option-info">
+                                <span class="schedule-option-location">Kerala Studio &bull; India</span>
+                                <span class="schedule-option-number">+91 80892 31332</span>
+                            </div>
+                            <div class="schedule-option-btn">
+                                <span>Call Kerala</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 122 16.92z"/></svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modalOverlay);
+
+            const closeBtn = modalOverlay.querySelector('.schedule-modal-close');
+            closeBtn.addEventListener('click', () => {
+                modalOverlay.classList.remove('active');
+            });
+
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    modalOverlay.classList.remove('active');
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                    modalOverlay.classList.remove('active');
+                }
+            });
+        }
+
+        document.addEventListener('click', (e) => {
+            const trigger = e.target.closest('.schedule-call-trigger, a[href="#schedule-call"]');
+            if (trigger) {
+                e.preventDefault();
+                modalOverlay.classList.add('active');
+            }
+        });
+    };
+
+    initScheduleCallModal();
+
 });
